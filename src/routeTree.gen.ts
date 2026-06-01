@@ -9,7 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TheRiseProgramRouteImport } from './routes/the-rise-program'
+import { Route as SubmitTestimonialRouteImport } from './routes/submit-testimonial'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SeerahIntroductoryRouteImport } from './routes/seerah-introductory'
+import { Route as SeerahDetailedRouteImport } from './routes/seerah-detailed'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -18,9 +22,29 @@ import { Route as BookClubsRouteImport } from './routes/book-clubs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TheRiseProgramRoute = TheRiseProgramRouteImport.update({
+  id: '/the-rise-program',
+  path: '/the-rise-program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubmitTestimonialRoute = SubmitTestimonialRouteImport.update({
+  id: '/submit-testimonial',
+  path: '/submit-testimonial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeerahIntroductoryRoute = SeerahIntroductoryRouteImport.update({
+  id: '/seerah-introductory',
+  path: '/seerah-introductory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeerahDetailedRoute = SeerahDetailedRouteImport.update({
+  id: '/seerah-detailed',
+  path: '/seerah-detailed',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsletterRoute = NewsletterRouteImport.update({
@@ -67,7 +91,11 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/newsletter': typeof NewsletterRoute
+  '/seerah-detailed': typeof SeerahDetailedRoute
+  '/seerah-introductory': typeof SeerahIntroductoryRoute
   '/services': typeof ServicesRoute
+  '/submit-testimonial': typeof SubmitTestimonialRoute
+  '/the-rise-program': typeof TheRiseProgramRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -77,7 +105,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/newsletter': typeof NewsletterRoute
+  '/seerah-detailed': typeof SeerahDetailedRoute
+  '/seerah-introductory': typeof SeerahIntroductoryRoute
   '/services': typeof ServicesRoute
+  '/submit-testimonial': typeof SubmitTestimonialRoute
+  '/the-rise-program': typeof TheRiseProgramRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -88,7 +120,11 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/newsletter': typeof NewsletterRoute
+  '/seerah-detailed': typeof SeerahDetailedRoute
+  '/seerah-introductory': typeof SeerahIntroductoryRoute
   '/services': typeof ServicesRoute
+  '/submit-testimonial': typeof SubmitTestimonialRoute
+  '/the-rise-program': typeof TheRiseProgramRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -100,7 +136,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/newsletter'
+    | '/seerah-detailed'
+    | '/seerah-introductory'
     | '/services'
+    | '/submit-testimonial'
+    | '/the-rise-program'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -110,7 +150,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/newsletter'
+    | '/seerah-detailed'
+    | '/seerah-introductory'
     | '/services'
+    | '/submit-testimonial'
+    | '/the-rise-program'
   id:
     | '__root__'
     | '/'
@@ -120,7 +164,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/newsletter'
+    | '/seerah-detailed'
+    | '/seerah-introductory'
     | '/services'
+    | '/submit-testimonial'
+    | '/the-rise-program'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -131,16 +179,48 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
   NewsletterRoute: typeof NewsletterRoute
+  SeerahDetailedRoute: typeof SeerahDetailedRoute
+  SeerahIntroductoryRoute: typeof SeerahIntroductoryRoute
   ServicesRoute: typeof ServicesRoute
+  SubmitTestimonialRoute: typeof SubmitTestimonialRoute
+  TheRiseProgramRoute: typeof TheRiseProgramRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/the-rise-program': {
+      id: '/the-rise-program'
+      path: '/the-rise-program'
+      fullPath: '/the-rise-program'
+      preLoaderRoute: typeof TheRiseProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/submit-testimonial': {
+      id: '/submit-testimonial'
+      path: '/submit-testimonial'
+      fullPath: '/submit-testimonial'
+      preLoaderRoute: typeof SubmitTestimonialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seerah-introductory': {
+      id: '/seerah-introductory'
+      path: '/seerah-introductory'
+      fullPath: '/seerah-introductory'
+      preLoaderRoute: typeof SeerahIntroductoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seerah-detailed': {
+      id: '/seerah-detailed'
+      path: '/seerah-detailed'
+      fullPath: '/seerah-detailed'
+      preLoaderRoute: typeof SeerahDetailedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/newsletter': {
@@ -203,7 +283,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
   NewsletterRoute: NewsletterRoute,
+  SeerahDetailedRoute: SeerahDetailedRoute,
+  SeerahIntroductoryRoute: SeerahIntroductoryRoute,
   ServicesRoute: ServicesRoute,
+  SubmitTestimonialRoute: SubmitTestimonialRoute,
+  TheRiseProgramRoute: TheRiseProgramRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

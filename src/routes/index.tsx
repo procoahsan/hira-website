@@ -16,24 +16,24 @@ const forYou = [
   "You want guidance rooted in Islamic values — not generic self-help",
 ];
 
-const offerings = [
+const latestOfferings = [
   {
     icon: Heart,
-    title: "One-on-One Counselling",
-    body: "Private, personalised sessions for the seasons of life — relationships, identity, confidence, direction. At your pace, in your language.",
-    to: "/services",
+    title: "The RISE Program",
+    body: "A six-month growth journey with weekly live sessions, practical reflection, and faith-rooted momentum for women ready to lead their lives with clarity.",
+    to: "/the-rise-program",
   },
   {
     icon: Compass,
-    title: "Structured Programs",
-    body: "Guided journeys that braid Islamic principles with research-backed coaching, so transformation lasts.",
+    title: "Seerah Courses",
+    body: "Choose the introductory or detailed Seerah path and learn through dedicated pages designed for depth, clarity, and reflection.",
     to: "/courses",
   },
   {
     icon: BookOpen,
-    title: "Book Clubs",
-    body: "Curated reading circles for teens, women, and rising professionals — slow, thoughtful, in community.",
-    to: "/book-clubs",
+    title: "Home Learning Plan",
+    body: "A personalised roadmap for mothers who want a clearer, more intentional approach to homeschooling and learning at home.",
+    to: "/services",
   },
 ];
 
@@ -97,6 +97,43 @@ function Index() {
         </div>
       </section>
 
+      {/* LATEST OFFERINGS */}
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-8">
+            <div>
+              <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
+                Latest offerings
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-balance">
+                The newest ways to work together.
+              </h2>
+            </div>
+            <p className="text-muted-foreground max-w-xl text-balance">
+              If you are deciding where to begin, these are the strongest entry points right now.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {latestOfferings.map(({ icon: Icon, title, body, to }) => (
+              <Link
+                key={title}
+                to={to}
+                className="group bg-card border border-border rounded-3xl p-8 hover:shadow-elegant transition-all hover:-translate-y-1"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-emerald-gradient grid place-items-center text-primary-foreground mb-6">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-2xl mb-3">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{body}</p>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm text-primary font-medium">
+                  Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* THIS IS FOR YOU */}
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6">
@@ -124,36 +161,6 @@ function Index() {
         </div>
       </section>
 
-      {/* WHAT I OFFER */}
-      <section className="py-24 bg-secondary/40 border-y border-border/60">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
-              What I offer
-            </div>
-            <h2 className="font-display text-4xl md:text-6xl">Three ways to walk together</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {offerings.map(({ icon: Icon, title, body, to }) => (
-              <Link
-                key={title}
-                to={to}
-                className="group relative bg-card border border-border rounded-3xl p-8 hover:shadow-elegant transition-all hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-emerald-gradient grid place-items-center text-primary-foreground mb-6">
-                  <Icon className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-2xl mb-3">{title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{body}</p>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm text-primary font-medium">
-                  Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* COURSES STRIP */}
       <section className="py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-8">
@@ -171,6 +178,57 @@ function Index() {
               </Link>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 md:py-32 bg-secondary/40 border-y border-border/60">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center mb-16">
+            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
+              Testimonials
+            </div>
+            <h2 className="font-display text-4xl md:text-6xl">Words from the community</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-card border border-border rounded-3xl p-8 shadow-soft">
+              <div className="flex gap-1 text-gold mb-4">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <p className="text-lg leading-relaxed text-foreground/85 italic mb-6">
+                "She helped me come home to myself — gently, and with the Qur'an as our compass. Hira's coaching provided the exact balance of accountability and empathy I needed."
+              </p>
+              <div className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                — A. M. (Coaching Client)
+              </div>
+            </div>
+            <div className="bg-card border border-border rounded-3xl p-8 shadow-soft">
+              <div className="flex gap-1 text-gold mb-4">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <p className="text-lg leading-relaxed text-foreground/85 italic mb-6">
+                "The Seerah sessions are profound. Hira has a gift for connecting the life of the Prophet ﷺ to the realities we face today. It changed how I view my own challenges."
+              </p>
+              <div className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                — S. K. (Seerah Student)
+              </div>
+            </div>
+          </div>
+          <div className="text-center">
+            <Link
+              to="/submit-testimonial"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:bg-muted transition text-sm font-medium"
+            >
+              Share your experience <ArrowRight className="w-4 h-4" />
+            </Link>
+            <p className="mt-4 text-xs text-muted-foreground">
+              All testimonials are reviewed before they appear on the website.
+            </p>
+          </div>
         </div>
       </section>
 

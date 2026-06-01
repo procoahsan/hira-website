@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { Mail, MessageCircle, Instagram } from "lucide-react";
+import { Mail, Instagram, Linkedin, Facebook } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
@@ -22,26 +22,53 @@ function Contact() {
       <PageHeader
         eyebrow="Contact"
         title="Say salaam."
-        intro="For coaching enquiries, speaking, or simply to say hello — this inbox is read by me."
+        intro="For coaching enquiries, speaking, or simply to say hello — this inbox and these socials are read by me."
       />
 
       <section className="py-20">
         <div className="mx-auto max-w-5xl px-6 grid md:grid-cols-2 gap-10">
           <div className="space-y-6">
             {[
-              { icon: Mail, t: "Email", v: "hello@hirasaqib.com" },
-              { icon: MessageCircle, t: "WhatsApp", v: "By request after intro" },
-              { icon: Instagram, t: "Instagram", v: "@hirasaqib" },
-            ].map(({ icon: Icon, t, v }) => (
-              <div key={t} className="flex gap-4 items-start">
+              {
+                icon: Mail,
+                t: "Email",
+                v: "info@hirasaqib.com",
+                href: "mailto:info@hirasaqib.com",
+              },
+              {
+                icon: Instagram,
+                t: "Instagram",
+                v: "@worthwhilelearning",
+                href: "https://www.instagram.com/worthwhilelearning/?hl=en",
+              },
+              {
+                icon: Linkedin,
+                t: "LinkedIn",
+                v: "Hira Saqib",
+                href: "https://www.linkedin.com/in/hira-saqib-acma-92a5a716",
+              },
+              {
+                icon: Facebook,
+                t: "Facebook",
+                v: "Hira Saqib",
+                href: "https://www.facebook.com/profile.php?id=100063738618659",
+              },
+            ].map(({ icon: Icon, t, v, href }) => (
+              <a
+                key={t}
+                href={href}
+                target={href.startsWith("mailto") ? undefined : "_blank"}
+                rel="noreferrer"
+                className="flex gap-4 items-start group"
+              >
                 <div className="w-11 h-11 rounded-2xl bg-accent/40 grid place-items-center text-primary">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">{t}</div>
-                  <div className="font-display text-xl">{v}</div>
+                  <div className="font-display text-xl group-hover:text-primary transition-colors">{v}</div>
                 </div>
-              </div>
+              </a>
             ))}
 
             <blockquote className="mt-10 pl-6 border-l-2 border-gold italic text-lg text-muted-foreground">

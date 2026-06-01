@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Lock } from "lucide-react";
 
 export const Route = createFileRoute("/book-clubs")({
   head: () => ({
     meta: [
       { title: "Book Clubs — Hira Saqib" },
-      { name: "description", content: "Teen Girls', Ladies, and Rising Women book clubs — guided reading with discussion and community." },
+      { name: "description", content: "Girls', Rising Women, and Women's book clubs — guided reading with discussion and community." },
     ],
   }),
   component: BookClubs,
@@ -18,22 +18,26 @@ const clubs = [
     name: "Girls' Book Club",
     age: "Teens",
     body: "A curated reading space for girls with age-appropriate books and guided discussion. A gentle entry into the life of the mind.",
-    link: "https://forms.gle/qCA2QB3ZMi2SSGV5A",
+    link: "https://forms.gle/etNSWi2htn3fLy8c9",
     cta: "Sign up",
+    isOpen: true,
   },
   {
     name: "Rising Women Book Club",
-    age: "Young women",
-    body: "Guided reading with bi-monthly sessions, a reading guide, and a WhatsApp community. First month is free.",
-    link: "https://chat.whatsapp.com/GDwd53NI3e7LF42V6NsEQY",
+    age: "All Women",
+    body: "A membership-based guided reading club with bi-monthly sessions, a reading guide, and a WhatsApp community. June is our trial month — join us and experience the circle before committing.",
+    extra: "Membership: $99 per annum or $30 per quarter",
+    link: "https://chat.whatsapp.com/GDwd53NI3e7LF42V6NsEQY?s=cl&p=a&mlu=2",
     cta: "Join WhatsApp",
+    isOpen: true,
   },
   {
     name: "Women's Book Discussion",
-    age: "Open to all",
-    body: "An informal book discussion group for women — no commitment, no pressure, just conversation around the books that move us.",
+    age: "Closed Circle",
+    body: "An intimate book discussion group for a closed circle of women. Currently reading: آدابِ اختلاف — exploring the etiquettes of disagreement with depth and reflection.",
     link: "/contact",
-    cta: "Get in touch",
+    cta: "Enquire",
+    isOpen: false,
   },
 ];
 
@@ -51,11 +55,17 @@ function BookClubs() {
           {clubs.map((c) => (
             <article key={c.name} className="bg-card border border-border rounded-3xl p-8 flex flex-col hover:shadow-soft transition">
               <div className="w-12 h-12 rounded-2xl bg-accent/40 text-primary grid place-items-center mb-6">
-                <BookOpen className="w-5 h-5" />
+                {c.isOpen ? <BookOpen className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
               </div>
               <div className="text-xs uppercase tracking-widest text-gold mb-2">{c.age}</div>
               <h3 className="font-display text-2xl mb-3">{c.name}</h3>
               <p className="text-muted-foreground leading-relaxed flex-1">{c.body}</p>
+              {c.extra && (
+                <div className="mt-4 p-3 rounded-xl bg-secondary/60 border border-border/60">
+                  <p className="text-sm font-medium text-foreground/85">{c.extra}</p>
+                  <p className="text-xs text-muted-foreground mt-1 italic">June is a free trial month</p>
+                </div>
+              )}
               <a
                 href={c.link}
                 target={c.link.startsWith("http") ? "_blank" : undefined}

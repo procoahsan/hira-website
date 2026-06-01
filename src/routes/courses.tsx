@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, BookOpen, Star } from "lucide-react";
 
 export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
       { title: "Courses & Programs — Hira Saqib" },
-      { name: "description", content: "The RISE Program, Seerah Awareness, and Homeschooling mentorship — structured faith-centred journeys for Muslim women." },
+      { name: "description", content: "The RISE Program, Seerah courses, and Homeschooling mentorship — structured faith-centred journeys for Muslim women." },
     ],
   }),
   component: Courses,
@@ -18,15 +18,25 @@ const courses = [
     tag: "6-Month Flagship",
     title: "The RISE Program",
     body: "A complete personal development journey covering mindset, relationships, habits, and purpose — built around Islamic values and the texture of real life.",
-    bullets: ["Bi-weekly live coaching", "Workbooks & reflection prompts", "Private WhatsApp circle", "Lifetime alumni access"],
-    cta: "Apply now",
+    bullets: ["Weekly live coaching", "Workbooks & reflection prompts", "Private WhatsApp circle", "Lifetime alumni access"],
+    cta: "Learn more",
+    to: "/the-rise-program",
   },
   {
-    tag: "Live cohort",
-    title: "Seerah Awareness",
-    body: "Reconnect with the life of the Prophet ﷺ through intimate, discussion-based sessions that bring the Seerah out of the page and into your everyday.",
-    bullets: ["12 thematic sessions", "Primary-source readings", "Discussion in English & Urdu", "Recordings included"],
-    cta: "Join the waitlist",
+    tag: "6-Month Introductory",
+    title: "Seerah — Introductory Course",
+    body: "A structured introduction to the life of the Prophet Muhammad ﷺ. Over six months, covering the full span of his life — from the world into which he was born to the legacy he left behind.",
+    bullets: ["Weekly live sessions via Zoom", "6-month duration", "Open to all levels", "Free of charge"],
+    cta: "Learn more",
+    to: "/seerah-introductory",
+  },
+  {
+    tag: "2–3 Year In-Depth",
+    title: "Seerah — Detailed Study",
+    body: "A comprehensive, in-depth study integrating Quranic revelation alongside the Prophetic biography — not a summary, but a true immersion into his life ﷺ.",
+    bullets: ["Weekly 1.5-hour live sessions", "Quran integrated with Seerah", "2–3 year commitment", "Free of charge"],
+    cta: "Learn more",
+    to: "/seerah-detailed",
   },
   {
     tag: "Coming soon",
@@ -34,6 +44,7 @@ const courses = [
     body: "Practical, faith-aligned mentorship for mothers choosing intentional education at home. From confidence to curriculum to rhythm.",
     bullets: ["Foundations & philosophy", "Choosing a curriculum", "Routines that actually hold", "Community of homeschool mothers"],
     cta: "Notify me",
+    to: "/bookings",
   },
 ];
 
@@ -43,7 +54,7 @@ function Courses() {
       <PageHeader
         eyebrow="Courses"
         title="Structured journeys for the woman ready to do the work."
-        intro="Three programmes, each a different doorway into the same practice: substance, rooted in faith."
+        intro="Four programmes, each a different doorway into the same practice: substance, rooted in faith."
       />
 
       <section className="py-20">
@@ -70,7 +81,7 @@ function Courses() {
                   ))}
                 </ul>
                 <Link
-                  to="/bookings"
+                  to={c.to}
                   className="mt-9 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition"
                 >
                   {c.cta} <ArrowRight className="w-4 h-4" />

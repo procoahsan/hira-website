@@ -15,7 +15,35 @@ export const Route = createFileRoute("/bookings")({
 });
 
 function Bookings() {
-  const [done, setDone] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const preferredDate = String(formData.get("preferredDate") ?? "").trim();
+    const preferredTime = String(formData.get("preferredTime") ?? "").trim();
+    const timezone = String(formData.get("timezone") ?? "").trim();
+    const notes = String(formData.get("notes") ?? "").trim();
+
+    const subject = encodeURIComponent(`Discovery call request from ${name || "website visitor"}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${name || "N/A"}`,
+        `Email: ${email || "N/A"}`,
+        `Preferred date: ${preferredDate || "N/A"}`,
+        `Preferred time: ${preferredTime || "N/A"}`,
+        `Timezone: ${timezone || "N/A"}`,
+        "",
+        "Message:",
+        notes || "N/A",
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:info@hirasaqib.com?subject=${subject}&body=${body}`;
+    setSent(true);
+  };
 
   return (
     <SiteLayout>
@@ -47,82 +75,76 @@ function Bookings() {
           </div>
 
           <div className="lg:col-span-3 bg-card border border-border rounded-3xl p-8 md:p-10 shadow-soft">
-            {done ? (
-              <div className="py-16 text-center">
-                <div className="text-5xl mb-4">✦</div>
-                <h3 className="font-display text-3xl mb-3">Thank you.</h3>
-                <p className="text-muted-foreground">
-                  Your request has arrived. I'll be in touch within 48 hours, insha'Allah.
+            <h3 className="font-display text-3xl mb-2">Schedule your call</h3>
+            <p className="text-muted-foreground mb-6">
+              Use the form below to request a discovery call. I’ll review your note and reply with
+              a time that fits my current availability.
+            </p>
+
+            {sent ? (
+              <div className="rounded-2xl border border-border bg-secondary/40 p-8 text-center">
+                <div className="text-4xl mb-3 text-gold">✦</div>
+                <h4 className="font-display text-2xl">Request received.</h4>
+                <p className="mt-3 text-muted-foreground">
+                  Your email app should open with the details filled in. If it does not, please
+                  email info@hirasaqib.com directly.
                 </p>
               </div>
             ) : (
-              <form
-                className="space-y-5"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setDone(true);
-                }}
-              >
-                <h3 className="font-display text-3xl mb-2">Request a call</h3>
+              <form onSubmit={handleSubmit} className="grid gap-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Field label="Your name" name="name" required />
-                  <Field label="Email" name="email" type="email" required />
-                </div>
-                <Field label="WhatsApp (optional)" name="whatsapp" />
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Select label="Preferred language" name="lang" options={["English", "Urdu", "Either"]} />
-                  <Select
-                    label="What's calling you here?"
-                    name="topic"
-                    options={["Personal coaching", "RISE Program", "Seerah", "Homeschooling", "Just exploring"]}
+                  <input
+                    required
+                    name="name"
+                    placeholder="Your name"
+                    className="w-full rounded-2xl border border-input bg-background px-4 py-3"
+                  />
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    className="w-full rounded-2xl border border-input bg-background px-4 py-3"
                   />
                 </div>
-                <div>
-                  <label className="text-sm text-muted-foreground">Anything you'd like me to know</label>
-                  <textarea
-                    name="notes"
-                    rows={4}
-                    className="mt-1.5 w-full rounded-2xl border border-input bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-ring"
+                <div className="grid md:grid-cols-3 gap-4">
+                  <input
+                    required
+                    type="date"
+                    name="preferredDate"
+                    className="w-full rounded-2xl border border-input bg-background px-4 py-3"
+                  />
+                  <input
+                    required
+                    type="time"
+                    name="preferredTime"
+                    className="w-full rounded-2xl border border-input bg-background px-4 py-3"
+                  />
+                  <input
+                    required
+                    name="timezone"
+                    placeholder="Timezone"
+                    className="w-full rounded-2xl border border-input bg-background px-4 py-3"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full md:w-auto px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-medium shadow-elegant hover:-translate-y-0.5 transition"
-                >
+                <textarea
+                  required
+                  name="notes"
+                  rows={6}
+                  placeholder="Tell me a little about what you’d like support with"
+                  className="w-full rounded-2xl border border-input bg-background px-4 py-3"
+                />
+                <button className="mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:-translate-y-0.5 transition shadow-elegant">
                   Request my call
                 </button>
+                <p className="text-xs text-muted-foreground text-center">
+                  This replaces the broken embed and works directly from the website.
+                </p>
               </form>
             )}
           </div>
         </div>
       </section>
     </SiteLayout>
-  );
-}
-
-function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
-  return (
-    <div>
-      <label className="text-sm text-muted-foreground">{label}</label>
-      <input
-        name={name}
-        type={type}
-        required={required}
-        className="mt-1.5 w-full rounded-2xl border border-input bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-ring"
-      />
-    </div>
-  );
-}
-function Select({ label, name, options }: { label: string; name: string; options: string[] }) {
-  return (
-    <div>
-      <label className="text-sm text-muted-foreground">{label}</label>
-      <select
-        name={name}
-        className="mt-1.5 w-full rounded-2xl border border-input bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-ring"
-      >
-        {options.map((o) => <option key={o}>{o}</option>)}
-      </select>
-    </div>
   );
 }
