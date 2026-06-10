@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Moon, Sun, Menu, X, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useTheme } from "./ThemeProvider";
 
 const nav = [
@@ -47,14 +47,29 @@ const socials = [
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
+
+  // Track scroll for header shrink
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border/60">
-        <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
+      {/* ── Header ── */}
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "backdrop-blur-2xl bg-background/85 border-b border-border/60 shadow-soft"
+            : "backdrop-blur-xl bg-background/60"
+        }`}
+      >
+        <div className={`mx-auto max-w-7xl px-6 flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
           <Link to="/" className="flex items-center gap-3 group">
-            <span className="grid place-items-center w-11 h-11 rounded-full bg-emerald-gradient text-primary-foreground font-display text-xl shadow-soft">
+            <span className="grid place-items-center w-11 h-11 rounded-full bg-emerald-gradient text-primary-foreground font-display text-xl shadow-soft group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
               ﷽
             </span>
             <span className="flex flex-col leading-tight">
@@ -72,13 +87,13 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className={`relative px-3 py-2 text-sm transition-colors ${
-                    active ? "text-primary" : "text-foreground/70 hover:text-foreground"
+                  className={`relative px-3 py-2 text-sm transition-all duration-200 rounded-lg ${
+                    active ? "text-primary bg-primary/5" : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
                   }`}
                 >
                   {n.label}
                   {active && (
-                    <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-gold" />
+                    <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 bg-gold rounded-full" />
                   )}
                 </Link>
               );
@@ -95,9 +110,9 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
             </button>
             <Link
               to="/bookings"
-              className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition shadow-soft"
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition shadow-soft btn-shine relative"
             >
-              Book a call
+              Book a call <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <button
               className="lg:hidden p-2 rounded-full hover:bg-muted"
@@ -108,31 +123,52 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
             </button>
           </div>
         </div>
-        {open && (
-          <div className="lg:hidden border-t border-border/60 bg-background">
+
+        {/* Mobile menu with slide animation */}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
+            open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="border-t border-border/60 bg-background/95 backdrop-blur-2xl">
             <div className="px-6 py-4 flex flex-col gap-1">
               {nav.map((n) => (
                 <Link
                   key={n.to}
                   to={n.to}
                   onClick={() => setOpen(false)}
-                  className="py-2 text-sm text-foreground/80 hover:text-primary"
+                  className={`py-2.5 px-3 text-sm rounded-xl transition-all ${
+                    path === n.to
+                      ? "text-primary bg-primary/5 font-medium"
+                      : "text-foreground/80 hover:text-primary hover:bg-muted/50"
+                  }`}
                 >
                   {n.label}
                 </Link>
               ))}
+              <Link
+                to="/bookings"
+                onClick={() => setOpen(false)}
+                className="mt-2 flex items-center justify-center gap-2 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-soft"
+              >
+                Book a call <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
-        )}
+        </div>
       </header>
 
       <main className="flex-1">{children}</main>
 
-      <footer className="border-t border-border/60 mt-24">
-        <div className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-4 gap-10">
+      {/* ── Footer ── */}
+      <footer className="border-t border-border/60 mt-24 relative overflow-hidden">
+        {/* Decorative gradient */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[200px]" />
+
+        <div className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-4 gap-10 relative z-10">
           <div className="md:col-span-2">
             <div className="font-display text-3xl">Hira Saqib</div>
-            <p className="mt-3 text-muted-foreground max-w-md">
+            <p className="mt-3 text-muted-foreground max-w-md leading-relaxed">
               Helping Muslim women grow — from the inside out. Coaching, Seerah, and structured
               learning available in English and Urdu, worldwide.
             </p>
@@ -145,7 +181,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={s.label}
-                  className="w-10 h-10 rounded-full bg-accent/40 grid place-items-center text-foreground/70 hover:text-primary hover:bg-accent/60 transition-colors"
+                  className="w-10 h-10 rounded-full bg-accent/40 grid place-items-center text-foreground/70 hover:text-primary hover:bg-accent/60 hover:scale-110 transition-all duration-200"
                 >
                   {s.icon}
                 </a>
@@ -159,7 +195,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
             <ul className="space-y-2 text-sm">
               {nav.slice(1, 5).map((n) => (
                 <li key={n.to}>
-                  <Link to={n.to} className="hover:text-primary">
+                  <Link to={n.to} className="hover:text-primary transition-colors">
                     {n.label}
                   </Link>
                 </li>
@@ -171,11 +207,11 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
               Connect
             </h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
-              <li><Link to="/newsletter" className="hover:text-primary">Newsletter</Link></li>
-              <li><Link to="/bookings" className="hover:text-primary">Discovery call</Link></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+              <li><Link to="/newsletter" className="hover:text-primary transition-colors">Newsletter</Link></li>
+              <li><Link to="/bookings" className="hover:text-primary transition-colors">Discovery call</Link></li>
               <li>
-                <a href="mailto:info@hirasaqib.com" className="hover:text-primary">
+                <a href="mailto:info@hirasaqib.com" className="hover:text-primary transition-colors">
                   info@hirasaqib.com
                 </a>
               </li>
