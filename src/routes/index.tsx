@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { ArrowRight, Sparkles, BookOpen, Users, Heart, Compass, Star, Play, Quote } from "lucide-react";
+import { ArrowRight, Sparkles, BookOpen, Users, Heart, Compass, Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { useRevealAll } from "@/hooks/useReveal";
-import hero from "@/assets/profile.jpeg";
+import hero from "@/assets/about.jpeg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -48,6 +50,239 @@ const stats = [
   { value: "4.9", label: "Average Rating", suffix: "★" },
 ];
 
+const heroCourses = [
+  {
+    tag: "Flagship",
+    title: "The RISE Program",
+    body: "A 6-month personal development journey built around Islamic values.",
+    to: "/the-rise-program",
+    icon: Heart,
+  },
+  {
+    tag: "Seerah",
+    title: "Introductory Course",
+    body: "A structured path through the life of the Prophet Muhammad ﷺ.",
+    to: "/seerah-introductory",
+    icon: Compass,
+  },
+  {
+    tag: "Seerah",
+    title: "Detailed Study",
+    body: "A deeper 2-3 year study of Seerah with Quranic revelation.",
+    to: "/seerah-detailed",
+    icon: BookOpen,
+  },
+  {
+    tag: "Mentorship",
+    title: "Home Learning Plan",
+    body: "A practical roadmap for intentional homeschooling at home.",
+    to: "/services",
+    icon: Users,
+  },
+];
+
+const feedbacks = [
+  {
+    name: "Anonymous participant",
+    location: "Seerah course",
+    quote: "It's a life changing course Alhamdulillah. Learning Seerah to me has become an essential part of life. I'm loving the feeling of knowing Prophet SAW.",
+  },
+  {
+    name: "Asma Naeem",
+    location: "Faisalabad",
+    quote: "It deepened my understanding and interest in the Quran. Practical lessons from the life of Prophet PBUH.",
+  },
+  {
+    name: "Anonymous participant",
+    location: "Seerah course",
+    quote: "The lessons about how Prophet reacted in certain conditions give us strength to do the same in our lives. I am trying to instill the love of Seerah in my kids.",
+  },
+  {
+    name: "Asma Zahid",
+    location: "Karachi",
+    quote: "The open discussions and thought provoking questions encourage deeper reflection and engagement.",
+  },
+  {
+    name: "Anonymous participant",
+    location: "Seerah course",
+    quote: "We pause, reflect, and relate at every step. These discussions make it possible to incorporate the teachings of Rasool Allah in our lives.",
+  },
+  {
+    name: "Beena Sarfaraz",
+    location: "Dammam",
+    quote: "Gaining a deeper emotional and spiritual connection with the Prophet Muhammad ﷺ has transformed the way I view my own challenges and responsibilities.",
+  },
+  {
+    name: "Anonymous participant",
+    location: "Seerah course",
+    quote: "The biggest change is that when life happens, I pause and think what my Beloved SAW would have done at this moment.",
+  },
+  {
+    name: "Faryal Imran",
+    location: "Karachi",
+    quote: "It has strengthened my connection with Allah and improved my understanding of the Quran.",
+  },
+  {
+    name: "Anonymous participant",
+    location: "Seerah course",
+    quote: "Everyone in the group was very supportive and encouraging, so I felt totally at ease whenever I had something to say.",
+  },
+  {
+    name: "Fatima Irfan",
+    location: "Sialkot",
+    quote: "My love and connection with Rasoolallah has increased. I feel closer to him, and I have become more reflective relating to Seerah.",
+  },
+  {
+    name: "Momima Abbasi",
+    location: "Islamabad",
+    quote: "The discussion helps us reflect on different aspects of the Seerah and connect the lessons to our own lives.",
+  },
+  {
+    name: "Anonymous participant",
+    location: "Seerah course",
+    quote: "I have started loving my Prophet and Sahaba in a way that I never did before. Every day I started reading and listening to Sahaba's life.",
+  },
+];
+
+function HeroCourseCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % heroCourses.length);
+    }, 3200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="mt-8 max-w-xl overflow-hidden rounded-3xl border border-border/70 bg-card/70 p-3 shadow-soft backdrop-blur reveal">
+      <div className="flex items-center justify-between gap-3 px-2 pb-3">
+        <div className="text-xs uppercase tracking-[0.3em] text-gold">Courses</div>
+        <div className="flex gap-1.5">
+          {heroCourses.map((course, index) => (
+            <button
+              key={course.title}
+              type="button"
+              aria-label={`Show ${course.title}`}
+              onClick={() => setActiveIndex(index)}
+              className={`h-1.5 rounded-full transition-all ${activeIndex === index ? "w-6 bg-primary" : "w-2 bg-border"}`}
+            />
+          ))}
+        </div>
+      </div>
+      <motion.div
+        className="flex"
+        animate={{ x: `-${activeIndex * 100}%` }}
+        transition={{ type: "spring", stiffness: 130, damping: 22 }}
+      >
+        {heroCourses.map(({ icon: Icon, title, tag, body, to }) => (
+          <Link key={title} to={to} className="min-w-full">
+            <div className="flex min-h-[142px] gap-4 rounded-2xl bg-background/80 p-5 transition hover:bg-muted/70">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground">
+                <Icon className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-[11px] uppercase tracking-widest text-gold">{tag}</div>
+                <h3 className="mt-1 font-display text-2xl leading-tight">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                  Explore <ArrowRight className="h-3.5 w-3.5" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+function FeedbackCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % feedbacks.length);
+    }, 4200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const move = (direction: number) => {
+    setActiveIndex((current) => (current + direction + feedbacks.length) % feedbacks.length);
+  };
+
+  return (
+    <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[0.9fr_1.1fr]">
+      <div className="reveal">
+        <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">Feedback</div>
+        <h2 className="font-display text-4xl md:text-5xl text-balance">What students felt shift.</h2>
+        <p className="mt-5 text-muted-foreground leading-relaxed">
+          Seerah participants shared these reflections after studying, discussing, and applying the lessons.
+        </p>
+        <div className="mt-8 flex items-center gap-3">
+          <button
+            type="button"
+            aria-label="Previous feedback"
+            onClick={() => move(-1)}
+            className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-primary transition hover:bg-muted"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next feedback"
+            onClick={() => move(1)}
+            className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-primary transition hover:bg-muted"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+          <div className="text-sm text-muted-foreground">
+            {activeIndex + 1} / {feedbacks.length}
+          </div>
+        </div>
+      </div>
+      <div className="relative h-[430px] md:h-[480px] reveal">
+        {feedbacks.map((feedback, index) => {
+          const offset = (index - activeIndex + feedbacks.length) % feedbacks.length;
+          const visible = offset < 4;
+
+          return (
+            <motion.article
+              key={`${feedback.name}-${index}`}
+              className="absolute inset-x-0 top-0 mx-auto max-w-xl rounded-[2rem] border border-border bg-card p-7 shadow-elegant"
+              initial={false}
+              animate={{
+                opacity: visible ? 1 : 0,
+                scale: visible ? 1 - offset * 0.06 : 0.8,
+                y: visible ? offset * 34 : 120,
+                rotate: visible ? offset * -3 : -10,
+                zIndex: feedbacks.length - offset,
+              }}
+              transition={{ type: "spring", stiffness: 120, damping: 22 }}
+            >
+              <Quote className="h-9 w-9 text-gold/70" />
+              <p className="mt-5 text-lg leading-relaxed text-foreground/85 line-clamp-7">
+                "{feedback.quote}"
+              </p>
+              <div className="mt-7 flex items-center gap-3">
+                <div className="grid h-11 w-11 place-items-center rounded-full bg-emerald-gradient text-sm font-bold text-primary-foreground">
+                  {feedback.name.charAt(0)}
+                </div>
+                <div>
+                  <div className="text-sm font-medium">{feedback.name}</div>
+                  <div className="text-xs text-muted-foreground">{feedback.location}</div>
+                </div>
+              </div>
+            </motion.article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   useRevealAll();
 
@@ -83,6 +318,7 @@ function Index() {
                 Meet Hira
               </Link>
             </div>
+            <HeroCourseCarousel />
           </div>
 
           <div className="relative animate-in-up" style={{ animationDelay: "0.2s" }}>
@@ -228,6 +464,8 @@ function Index() {
       <section className="py-24 md:py-32 border-y border-border/60 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[200px]" />
         <div className="mx-auto max-w-7xl px-6 relative z-10">
+          <FeedbackCarousel />
+          <div className="hidden">
           <div className="text-center mb-16 reveal">
             <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
               Testimonials
@@ -281,6 +519,7 @@ function Index() {
             <p className="mt-4 text-xs text-muted-foreground">
               All testimonials are reviewed before they appear on the website.
             </p>
+          </div>
           </div>
         </div>
       </section>

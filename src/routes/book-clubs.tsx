@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
-import { BookOpen, Lock } from "lucide-react";
+import teenGirlsImg from "@/assets/teen-girls-book-club.jpeg";
+import ladiesImg from "@/assets/ladies-book-club.jpeg";
+import womensImg from "@/assets/rising-woman.jpeg";
 
 export const Route = createFileRoute("/book-clubs")({
   head: () => ({
@@ -21,6 +23,7 @@ const clubs = [
     link: "https://forms.gle/etNSWi2htn3fLy8c9",
     cta: "Sign up",
     isOpen: true,
+    image: teenGirlsImg,
   },
   {
     name: "Rising Women Book Club",
@@ -30,6 +33,7 @@ const clubs = [
     link: "https://chat.whatsapp.com/GDwd53NI3e7LF42V6NsEQY?s=cl&p=a&mlu=2",
     cta: "Join WhatsApp",
     isOpen: true,
+    image: ladiesImg,
   },
   {
     name: "Women's Book Discussion",
@@ -38,6 +42,7 @@ const clubs = [
     link: "/contact",
     cta: "Enquire",
     isOpen: false,
+    image: womensImg,
   },
 ];
 
@@ -50,30 +55,37 @@ function BookClubs() {
         intro="Three circles, one practice: meeting each other through the books that shape us."
       />
 
-      <section className="py-20">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-3 gap-6">
+      <section className="py-12">
+        <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8">
           {clubs.map((c) => (
-            <article key={c.name} className="bg-card border border-border rounded-3xl p-8 flex flex-col hover:shadow-soft transition">
-              <div className="w-12 h-12 rounded-2xl bg-accent/40 text-primary grid place-items-center mb-6">
-                {c.isOpen ? <BookOpen className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
+            <article key={c.name} className="bg-card border border-border rounded-[2rem] overflow-hidden flex flex-col hover:shadow-soft transition group min-h-[620px]">
+              <div className="h-72 overflow-hidden">
+                <img
+                  src={c.image}
+                  alt={c.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
-              <div className="text-xs uppercase tracking-widest text-gold mb-2">{c.age}</div>
-              <h3 className="font-display text-2xl mb-3">{c.name}</h3>
-              <p className="text-muted-foreground leading-relaxed flex-1">{c.body}</p>
-              {c.extra && (
-                <div className="mt-4 p-3 rounded-xl bg-secondary/60 border border-border/60">
-                  <p className="text-sm font-medium text-foreground/85">{c.extra}</p>
-                  <p className="text-xs text-muted-foreground mt-1 italic">June is a free trial month</p>
-                </div>
-              )}
-              <a
-                href={c.link}
-                target={c.link.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm text-primary font-medium"
-              >
-                {c.cta} →
-              </a>
+              <div className="p-6 flex flex-col flex-1">
+                <div className="text-xs uppercase tracking-widest text-gold mb-1">{c.age}</div>
+                <h3 className="font-display text-3xl mb-3">{c.name}</h3>
+                <p className="text-muted-foreground leading-relaxed flex-1 text-[16px]">{c.body}</p>
+                {c.extra && (
+                  <div className="mt-4 p-4 rounded-2xl bg-secondary/60 border border-border/60">
+                    <p className="text-sm font-medium text-foreground/85">{c.extra}</p>
+                    <p className="text-xs text-muted-foreground mt-1 italic">June is a free trial month</p>
+                  </div>
+                )}
+                <a
+                  href={c.link}
+                  target={c.link.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 text-sm text-primary font-medium"
+                >
+                  {c.cta} →
+                </a>
+              </div>
             </article>
           ))}
         </div>

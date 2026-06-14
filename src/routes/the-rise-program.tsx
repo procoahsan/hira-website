@@ -17,31 +17,37 @@ const modules = [
   {
     number: "01",
     title: "Personal Management",
+    summary: "Build self-awareness and take ownership of your time, energy, and daily direction.",
     body: "You cannot pour from an empty cup but most women have never been taught to fill their own. This module builds the foundation of everything that follows: deep self-awareness, an honest reflection of how you're currently spending your time and energy, and practical tools to take ownership of your day on your own terms. You'll stop reacting and start leading.",
   },
   {
     number: "02",
     title: "Stress Management",
+    summary: "Understand your stress patterns and build tools to regulate, recover, and keep moving.",
     body: "Stress isn't just a feeling it's a signal which most of us have learned to ignore until it becomes a life crisis. This module helps you understand what's actually driving your stress, break the cycles that keep you stuck in overwhelm, and build a personalised toolkit of strategies that work with your life, not against it. You'll finish this module knowing how to regulate, recover, and keep moving.",
   },
   {
     number: "03",
     title: "Health Management",
+    summary: "Care for your body and mind through sustainable habits that support your real life.",
     body: "Your body is an amanah, and yet it's often the first thing sacrificed when life gets busy. This module takes a holistic look at your physical and mental wellbeing which includes major things like sleep, nourishment, movement, and the habits that either drain or sustain you. No extreme overhauls. Just sustainable, values-aligned choices that help you feel like yourself again.",
   },
   {
     number: "04",
     title: "Relationship Management",
+    summary: "Learn clearer communication, healthier boundaries, and stronger relationship patterns.",
     body: "Your relationships shape your inner world more than almost anything else. This module gives you the frameworks and language to understand your patterns, communicate with clarity, set boundaries without guilt, and nurture the connections that matter most while releasing the ones that don't serve your growth. Healthier relationships start with a clearer, stronger you.",
   },
   {
     number: "05",
     title: "Household Management",
+    summary: "Create home systems that reduce mental load and bring rhythm back into family life.",
     body: "A well-run home is not a small thing it is the infrastructure of your family's life. This module reframes household management not as a burden to endure but as a domain to lead with intention. You'll build systems that reduce mental load, create rhythm and order in your home, and reclaim the time and headspace that chaos has been quietly stealing from you.",
   },
   {
     number: "06",
     title: "Vision Management",
+    summary: "Turn your growth into a clear long-term vision, meaningful goals, and a real roadmap.",
     body: "This is where everything comes together. With a stronger foundation across each and every area of your life, you're now ready to dream and plan with clarity and conviction. This module guides you through defining your long-term vision, setting meaningful goals, and building a sustainable action plan that keeps you moving forward long after the program ends. You don't just leave with intentions. You leave with a roadmap.",
   },
 ];
@@ -117,7 +123,8 @@ function TheRiseProgram() {
             {modules.map((m) => (
               <article
                 key={m.number}
-                className="bg-card border border-border rounded-3xl p-8 hover:shadow-soft transition group"
+                tabIndex={0}
+                className="bg-card border border-border rounded-3xl p-8 hover:shadow-soft focus:shadow-soft focus:outline-none focus:ring-2 focus:ring-ring transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4 mb-5">
                   <div className="w-12 h-12 rounded-2xl bg-emerald-gradient text-primary-foreground grid place-items-center font-display text-xl">
@@ -125,7 +132,15 @@ function TheRiseProgram() {
                   </div>
                   <h3 className="font-display text-xl">{m.title}</h3>
                 </div>
-                <p className="text-muted-foreground leading-relaxed text-[15px]">{m.body}</p>
+                <p className="text-muted-foreground leading-relaxed text-[15px]">{m.summary}</p>
+                <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-out group-hover:max-h-80 group-hover:opacity-100 group-focus:max-h-80 group-focus:opacity-100">
+                  <p className="mt-5 border-t border-border/70 pt-5 text-muted-foreground leading-relaxed text-[15px]">
+                    {m.body}
+                  </p>
+                </div>
+                <div className="mt-5 text-xs uppercase tracking-widest text-gold transition-opacity duration-300 group-hover:opacity-0 group-focus:opacity-0">
+                  Hover to read more
+                </div>
               </article>
             ))}
           </div>

@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
-// Requested asset `about.jpeg` not found in /src/assets; using `hero-portrait.jpg` as fallback
-import hero from "@/assets/about.jpeg";
+import hero from "@/assets/profile.jpeg";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
