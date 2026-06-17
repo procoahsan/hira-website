@@ -178,7 +178,7 @@ function HeroCourseCarousel() {
 
   return (
     <div className="mt-8 max-w-xl overflow-hidden rounded-3xl border border-border/70 bg-card/70 p-3 shadow-soft backdrop-blur reveal">
-      <div className="flex items-center justify-between gap-3 px-2 pb-3">
+      <div className="flex  items-center justify-between gap-3 px-2 pb-3">
         <div className="text-xs uppercase tracking-[0.3em] text-gold">Courses</div>
         <div className="flex gap-1.5">
           {heroCourses.map((course, index) => (
