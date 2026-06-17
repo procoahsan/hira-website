@@ -179,13 +179,13 @@ function HeroCourseCarousel() {
         </div>
       </div>
       <motion.div
-        className="flex"
+        className="flex gap-2 items-center mr-4"
         animate={{ x: `-${activeIndex * 100}%` }}
         transition={{ type: "spring", stiffness: 130, damping: 22 }}
       >
         {heroCourses.map(({ icon: Icon, title, tag, body, to }) => (
           <Link key={title} to={to} className="min-w-full">
-            <div className="flex min-h-[142px] gap-4 rounded-2xl bg-background/80 p-5 transition hover:bg-muted/70">
+            <div className="flex min-h-[150px] gap-4 rounded-2xl bg-background/80 p-5 transition hover:bg-muted/70">
               <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground">
                 <Icon className="h-5 w-5" />
               </div>

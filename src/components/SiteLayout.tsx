@@ -2,6 +2,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Moon, Sun, Menu, X, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "./ThemeProvider";
+import darkLogo from "@/assets/dark-logo.png";
+import lightLogo from "@/assets/light-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -68,10 +70,12 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
         }`}
       >
         <div className={`mx-auto max-w-7xl px-6 flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
-          <Link to="/" className="flex items-center gap-3 group">
-            <span className="grid place-items-center w-11 h-11 rounded-full bg-emerald-gradient text-primary-foreground font-display text-xl shadow-soft group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-              ﷽
-            </span>
+          <Link to="/" className="flex items-center gap-0.5 group">
+            <img 
+              src={theme === "dark" ? darkLogo : lightLogo} 
+              alt="Hira Saqib" 
+              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]" 
+            />
             <span className="flex flex-col leading-tight">
               <span className="font-display text-xl tracking-tight">Hira Saqib</span>
               <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -167,8 +171,12 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
 
         <div className="mx-auto max-w-7xl px-6 py-16 grid md:grid-cols-4 gap-10 relative z-10">
           <div className="md:col-span-2">
-            <div className="font-display text-3xl">Hira Saqib</div>
-            <p className="mt-3 text-muted-foreground max-w-md leading-relaxed">
+            <img 
+              src={theme === "dark" ? darkLogo : lightLogo} 
+              alt="Hira Saqib" 
+              className="h-12 w-auto object-contain mb-4" 
+            />
+            <p className="text-muted-foreground max-w-md leading-relaxed">
               Helping Muslim women grow — from the inside out. Coaching, Seerah, and structured
               learning available in English and Urdu, worldwide.
             </p>
