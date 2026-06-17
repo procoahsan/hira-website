@@ -10,19 +10,10 @@ import {
   Compass,
   Star,
   Quote,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRevealAll } from "@/hooks/useReveal";
 import hero from "@/assets/about.jpeg";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -228,7 +219,30 @@ function HeroCourseCarousel() {
   );
 }
 
+function FeedbackCard({ feedback }: { feedback: (typeof feedbacks)[number] }) {
+  return (
+    <div className="feedback-card w-[340px] md:w-[380px] shrink-0 rounded-3xl border border-border bg-card p-8 shadow-soft flex flex-col group transition-all hover:-translate-y-2 hover:shadow-elegant">
+      <Quote className="h-10 w-10 text-gold/30 mb-6 group-hover:text-gold/70 transition-colors" />
+      <p className="text-lg leading-relaxed text-foreground/85 flex-grow italic">
+        "{feedback.quote}"
+      </p>
+      <div className="mt-8 flex items-center gap-4">
+        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-emerald-gradient text-sm font-bold text-primary-foreground shadow-sm">
+          {feedback.name.charAt(0)}
+        </div>
+        <div>
+          <div className="text-sm font-semibold">{feedback.name}</div>
+          <div className="text-xs text-muted-foreground mt-0.5">{feedback.location}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function FeedbackCarousel() {
+  const row1 = feedbacks.slice(0, 6);
+  const row2 = feedbacks.slice(6);
+
   return (
     <div className="mx-auto w-full max-w-6xl px-4 md:px-12">
       <div className="text-center mb-16 reveal">
@@ -242,46 +256,26 @@ function FeedbackCarousel() {
         </p>
       </div>
 
-      <Carousel
-        opts={{
-          align: "start",
-          loop: true,
-        }}
-        className="w-full reveal"
-      >
-        <CarouselContent className="-ml-4 md:-ml-6">
-          {feedbacks.map((feedback, index) => (
-            <CarouselItem
-              key={`${feedback.name}-${index}`}
-              className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3"
-            >
-              <div className="h-full rounded-3xl border border-border bg-card p-8 shadow-soft flex flex-col group transition-all hover:-translate-y-2 hover:shadow-elegant">
-                <Quote className="h-10 w-10 text-gold/30 mb-6 group-hover:text-gold/70 transition-colors" />
-                <p className="text-lg leading-relaxed text-foreground/85 flex-grow italic">
-                  "{feedback.quote}"
-                </p>
-                <div className="mt-8 flex items-center gap-4">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-emerald-gradient text-sm font-bold text-primary-foreground shadow-sm">
-                    {feedback.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold">{feedback.name}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">{feedback.location}</div>
-                  </div>
-                </div>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <div className="hidden md:block">
-          <CarouselPrevious className="left-[-3rem]" />
-          <CarouselNext className="right-[-3rem]" />
+      {/* Marquee rows */}
+      <div className="space-y-6 reveal">
+        {/* Row 1 — scrolls left */}
+        <div className="marquee-track overflow-hidden">
+          <div className="marquee-scroll flex gap-6">
+            {[...row1, ...row1].map((fb, i) => (
+              <FeedbackCard key={`r1-${i}`} feedback={fb} />
+            ))}
+          </div>
         </div>
-        <div className="flex items-center justify-center gap-4 mt-8 md:hidden">
-          <CarouselPrevious className="static translate-y-0 h-10 w-10" />
-          <CarouselNext className="static translate-y-0 h-10 w-10" />
+
+        {/* Row 2 — scrolls right */}
+        <div className="marquee-track overflow-hidden">
+          <div className="marquee-scroll marquee-reverse flex gap-6">
+            {[...row2, ...row2].map((fb, i) => (
+              <FeedbackCard key={`r2-${i}`} feedback={fb} />
+            ))}
+          </div>
         </div>
-      </Carousel>
+      </div>
     </div>
   );
 }
