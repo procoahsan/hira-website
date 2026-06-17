@@ -5,7 +5,10 @@ function record(error) {
 }
 if (typeof globalThis.addEventListener === "function") {
   globalThis.addEventListener("error", (event) => record(event.error ?? event));
-  globalThis.addEventListener("unhandledrejection", (event) => record(event.reason));
+  globalThis.addEventListener(
+    "unhandledrejection",
+    (event) => record(event.reason)
+  );
 }
 function consumeLastCapturedError() {
   if (!lastCapturedError) return void 0;
@@ -50,16 +53,16 @@ function renderErrorPage() {
 let serverEntryPromise;
 async function getServerEntry() {
   if (!serverEntryPromise) {
-    serverEntryPromise = import("./server-KbOrpO-8.mjs")
-      .then((n) => n._)
-      .then((m) => m.default ?? m);
+    serverEntryPromise = import("./server-CUff86dv.mjs").then((n) => n._).then(
+      (m) => m.default ?? m
+    );
   }
   return serverEntryPromise;
 }
 function brandedErrorResponse() {
   return new Response(renderErrorPage(), {
     status: 500,
-    headers: { "content-type": "text/html; charset=utf-8" },
+    headers: { "content-type": "text/html; charset=utf-8" }
   });
 }
 function isCatastrophicSsrErrorBody(body, responseStatus) {
@@ -77,11 +80,7 @@ function isCatastrophicSsrErrorBody(body, responseStatus) {
   if (!Object.keys(fields).every((key) => expectedKeys.has(key))) {
     return false;
   }
-  return (
-    fields.unhandled === true &&
-    fields.message === "HTTPError" &&
-    (fields.status === void 0 || fields.status === responseStatus)
-  );
+  return fields.unhandled === true && fields.message === "HTTPError" && (fields.status === void 0 || fields.status === responseStatus);
 }
 async function normalizeCatastrophicSsrResponse(response) {
   if (response.status < 500) return response;
@@ -104,6 +103,9 @@ const server = {
       console.error(error);
       return brandedErrorResponse();
     }
-  },
+  }
 };
-export { server as default, renderErrorPage as r };
+export {
+  server as default,
+  renderErrorPage as r
+};
