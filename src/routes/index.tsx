@@ -1,7 +1,18 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { ArrowRight, Sparkles, BookOpen, Users, Heart, Compass, Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  Sparkles,
+  BookOpen,
+  Users,
+  Heart,
+  Compass,
+  Star,
+  Quote,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { useRevealAll } from "@/hooks/useReveal";
 import hero from "@/assets/about.jpeg";
@@ -92,62 +103,74 @@ const feedbacks = [
   {
     name: "Anonymous participant",
     location: "Seerah course",
-    quote: "It's a life changing course Alhamdulillah. Learning Seerah to me has become an essential part of life. I'm loving the feeling of knowing Prophet SAW.",
+    quote:
+      "It's a life changing course Alhamdulillah. Learning Seerah to me has become an essential part of life. I'm loving the feeling of knowing Prophet SAW.",
   },
   {
     name: "Asma Naeem",
     location: "Faisalabad",
-    quote: "It deepened my understanding and interest in the Quran. Practical lessons from the life of Prophet PBUH.",
+    quote:
+      "It deepened my understanding and interest in the Quran. Practical lessons from the life of Prophet PBUH.",
   },
   {
     name: "Anonymous participant",
     location: "Seerah course",
-    quote: "The lessons about how Prophet reacted in certain conditions give us strength to do the same in our lives. I am trying to instill the love of Seerah in my kids.",
+    quote:
+      "The lessons about how Prophet reacted in certain conditions give us strength to do the same in our lives. I am trying to instill the love of Seerah in my kids.",
   },
   {
     name: "Asma Zahid",
     location: "Karachi",
-    quote: "The open discussions and thought provoking questions encourage deeper reflection and engagement.",
+    quote:
+      "The open discussions and thought provoking questions encourage deeper reflection and engagement.",
   },
   {
     name: "Anonymous participant",
     location: "Seerah course",
-    quote: "We pause, reflect, and relate at every step. These discussions make it possible to incorporate the teachings of Rasool Allah in our lives.",
+    quote:
+      "We pause, reflect, and relate at every step. These discussions make it possible to incorporate the teachings of Rasool Allah in our lives.",
   },
   {
     name: "Beena Sarfaraz",
     location: "Dammam",
-    quote: "Gaining a deeper emotional and spiritual connection with the Prophet Muhammad ﷺ has transformed the way I view my own challenges and responsibilities.",
+    quote:
+      "Gaining a deeper emotional and spiritual connection with the Prophet Muhammad ﷺ has transformed the way I view my own challenges and responsibilities.",
   },
   {
     name: "Anonymous participant",
     location: "Seerah course",
-    quote: "The biggest change is that when life happens, I pause and think what my Beloved SAW would have done at this moment.",
+    quote:
+      "The biggest change is that when life happens, I pause and think what my Beloved SAW would have done at this moment.",
   },
   {
     name: "Faryal Imran",
     location: "Karachi",
-    quote: "It has strengthened my connection with Allah and improved my understanding of the Quran.",
+    quote:
+      "It has strengthened my connection with Allah and improved my understanding of the Quran.",
   },
   {
     name: "Anonymous participant",
     location: "Seerah course",
-    quote: "Everyone in the group was very supportive and encouraging, so I felt totally at ease whenever I had something to say.",
+    quote:
+      "Everyone in the group was very supportive and encouraging, so I felt totally at ease whenever I had something to say.",
   },
   {
     name: "Fatima Irfan",
     location: "Sialkot",
-    quote: "My love and connection with Rasoolallah has increased. I feel closer to him, and I have become more reflective relating to Seerah.",
+    quote:
+      "My love and connection with Rasoolallah has increased. I feel closer to him, and I have become more reflective relating to Seerah.",
   },
   {
     name: "Momima Abbasi",
     location: "Islamabad",
-    quote: "The discussion helps us reflect on different aspects of the Seerah and connect the lessons to our own lives.",
+    quote:
+      "The discussion helps us reflect on different aspects of the Seerah and connect the lessons to our own lives.",
   },
   {
     name: "Anonymous participant",
     location: "Seerah course",
-    quote: "I have started loving my Prophet and Sahaba in a way that I never did before. Every day I started reading and listening to Sahaba's life.",
+    quote:
+      "I have started loving my Prophet and Sahaba in a way that I never did before. Every day I started reading and listening to Sahaba's life.",
   },
 ];
 
@@ -210,9 +233,12 @@ function FeedbackCarousel() {
     <div className="mx-auto w-full max-w-6xl px-4 md:px-12">
       <div className="text-center mb-16 reveal">
         <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">Feedback</div>
-        <h2 className="font-display text-4xl md:text-5xl text-balance">What students felt shift.</h2>
+        <h2 className="font-display text-4xl md:text-5xl text-balance">
+          What students felt shift.
+        </h2>
         <p className="mt-5 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-          Seerah participants shared these reflections after studying, discussing, and applying the lessons.
+          Seerah participants shared these reflections after studying, discussing, and applying the
+          lessons.
         </p>
       </div>
 
@@ -225,7 +251,10 @@ function FeedbackCarousel() {
       >
         <CarouselContent className="-ml-4 md:-ml-6">
           {feedbacks.map((feedback, index) => (
-            <CarouselItem key={`${feedback.name}-${index}`} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
+            <CarouselItem
+              key={`${feedback.name}-${index}`}
+              className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3"
+            >
               <div className="h-full rounded-3xl border border-border bg-card p-8 shadow-soft flex flex-col group transition-all hover:-translate-y-2 hover:shadow-elegant">
                 <Quote className="h-10 w-10 text-gold/30 mb-6 group-hover:text-gold/70 transition-colors" />
                 <p className="text-lg leading-relaxed text-foreground/85 flex-grow italic">
@@ -274,9 +303,9 @@ function Index() {
               <span className="italic text-gradient drop-shadow-sm">from the inside out.</span>
             </h1>
             <p className="mt-7 text-lg text-muted-foreground max-w-xl text-balance leading-relaxed">
-              I am Hira Saqib — a certified life coach, Seerah educator, and homeschooling mentor.
-              I help women find their substance through personal coaching, structured programmes,
-              and faith-centred learning. In English and Urdu, worldwide.
+              I am Hira Saqib — a certified life coach, Seerah educator, and homeschooling mentor. I
+              help women find their substance through personal coaching, structured programmes, and
+              faith-centred learning. In English and Urdu, worldwide.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -329,9 +358,12 @@ function Index() {
           {stats.map((s) => (
             <div key={s.label} className="text-center reveal" style={{ transitionDelay: "0.1s" }}>
               <div className="font-display text-4xl md:text-5xl text-primary counter-glow">
-                {s.value}{s.suffix && <span className="text-gold">{s.suffix}</span>}
+                {s.value}
+                {s.suffix && <span className="text-gold">{s.suffix}</span>}
               </div>
-              <div className="text-sm text-muted-foreground mt-1 uppercase tracking-wider">{s.label}</div>
+              <div className="text-sm text-muted-foreground mt-1 uppercase tracking-wider">
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
@@ -362,7 +394,9 @@ function Index() {
                 className="group glass-card rounded-3xl p-8 transition-all hover:-translate-y-3 hover:scale-[1.02] duration-500 relative overflow-hidden"
               >
                 {/* Subtle accent gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}
+                />
                 <div className="relative z-10">
                   <div className="w-14 h-14 rounded-2xl bg-emerald-gradient grid place-items-center text-primary-foreground mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-soft">
                     <Icon className="w-6 h-6" />
@@ -370,7 +404,8 @@ function Index() {
                   <h3 className="font-display text-2xl mb-3">{title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{body}</p>
                   <div className="mt-6 inline-flex items-center gap-2 text-sm text-primary font-medium">
-                    Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                    Explore{" "}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
                   </div>
                 </div>
               </Link>
@@ -387,14 +422,18 @@ function Index() {
             <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
               For you
             </div>
-            <h2 className="font-display text-4xl md:text-6xl text-balance">
-              This is for you if…
-            </h2>
+            <h2 className="font-display text-4xl md:text-6xl text-balance">This is for you if…</h2>
           </div>
           <ul className="grid md:grid-cols-2 gap-x-12 gap-y-5">
             {forYou.map((line, i) => (
-              <li key={line} className="flex gap-4 group reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
-                <span className="text-gold mt-1 text-lg group-hover:scale-125 transition-transform duration-300">✦</span>
+              <li
+                key={line}
+                className="flex gap-4 group reveal"
+                style={{ transitionDelay: `${i * 0.08}s` }}
+              >
+                <span className="text-gold mt-1 text-lg group-hover:scale-125 transition-transform duration-300">
+                  ✦
+                </span>
                 <span className="text-lg leading-relaxed text-foreground/85 group-hover:text-foreground transition">
                   {line}
                 </span>
@@ -411,22 +450,52 @@ function Index() {
       <section className="py-24 md:py-32 bg-secondary/30">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-14 reveal">
-            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">Programmes</div>
-            <h2 className="font-display text-4xl md:text-5xl text-balance">Structured journeys, deep roots.</h2>
+            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
+              Programmes
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl text-balance">
+              Structured journeys, deep roots.
+            </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8 stagger-children">
             {[
-              { tag: "Flagship", title: "The RISE Program", body: "A 6-month personal development journey — mindset, relationships, habits, purpose — built around Islamic values.", to: "/the-rise-program" },
-              { tag: "Live cohort", title: "Seerah Awareness", body: "Reconnect with the life of the Prophet ﷺ through intimate, discussion-based sessions that move from page to life.", to: "/courses" },
-              { tag: "Coming soon", title: "Homeschooling — What, Why & How", body: "Practical, faith-aligned mentorship for mothers choosing intentional education at home.", to: "/courses" },
+              {
+                tag: "Flagship",
+                title: "The RISE Program",
+                body: "A 6-month personal development journey — mindset, relationships, habits, purpose — built around Islamic values.",
+                to: "/the-rise-program",
+              },
+              {
+                tag: "Live cohort",
+                title: "Seerah Awareness",
+                body: "Reconnect with the life of the Prophet ﷺ through intimate, discussion-based sessions that move from page to life.",
+                to: "/courses",
+              },
+              {
+                tag: "Coming soon",
+                title: "Homeschooling — What, Why & How",
+                body: "Practical, faith-aligned mentorship for mothers choosing intentional education at home.",
+                to: "/courses",
+              },
             ].map((c) => (
-              <article key={c.title} className="glass-card rounded-3xl p-8 flex flex-col group transition-all hover:-translate-y-3 duration-500 relative overflow-hidden">
+              <article
+                key={c.title}
+                className="glass-card rounded-3xl p-8 flex flex-col group transition-all hover:-translate-y-3 duration-500 relative overflow-hidden"
+              >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full" />
-                <span className="text-xs uppercase tracking-widest text-gold mb-4 relative z-10">{c.tag}</span>
+                <span className="text-xs uppercase tracking-widest text-gold mb-4 relative z-10">
+                  {c.tag}
+                </span>
                 <h3 className="font-display text-2xl mb-3 relative z-10">{c.title}</h3>
-                <p className="text-muted-foreground leading-relaxed flex-1 relative z-10">{c.body}</p>
-                <Link to={c.to} className="mt-6 text-sm text-primary inline-flex items-center gap-2 relative z-10">
-                  Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                <p className="text-muted-foreground leading-relaxed flex-1 relative z-10">
+                  {c.body}
+                </p>
+                <Link
+                  to={c.to}
+                  className="mt-6 text-sm text-primary inline-flex items-center gap-2 relative z-10"
+                >
+                  Explore{" "}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
               </article>
             ))}
@@ -440,60 +509,65 @@ function Index() {
         <div className="mx-auto max-w-7xl px-6 relative z-10">
           <FeedbackCarousel />
           <div className="hidden">
-          <div className="text-center mb-16 reveal">
-            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
-              Testimonials
-            </div>
-            <h2 className="font-display text-4xl md:text-6xl">Words from the community</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {[
-              {
-                quote: "She helped me come home to myself — gently, and with the Qur'an as our compass. Hira's coaching provided the exact balance of accountability and empathy I needed.",
-                name: "A. M.",
-                role: "Coaching Client",
-              },
-              {
-                quote: "The Seerah sessions are profound. Hira has a gift for connecting the life of the Prophet ﷺ to the realities we face today. It changed how I view my own challenges.",
-                name: "S. K.",
-                role: "Seerah Student",
-              },
-            ].map((t) => (
-              <div key={t.name} className="glass-card rounded-3xl p-8 reveal relative overflow-hidden group">
-                <div className="absolute top-6 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Quote className="w-16 h-16 text-gold" />
-                </div>
-                <div className="flex gap-1 text-gold mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
-                  ))}
-                </div>
-                <p className="text-lg leading-relaxed text-foreground/85 italic mb-6 relative z-10">
-                  "{t.quote}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-emerald-gradient grid place-items-center text-primary-foreground text-sm font-bold">
-                    {t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium">{t.name}</div>
-                    <div className="text-xs text-muted-foreground">{t.role}</div>
-                  </div>
-                </div>
+            <div className="text-center mb-16 reveal">
+              <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
+                Testimonials
               </div>
-            ))}
-          </div>
-          <div className="text-center reveal">
-            <Link
-              to="/submit-testimonial"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:bg-muted hover:border-primary/30 transition-all text-sm font-medium"
-            >
-              Share your experience <ArrowRight className="w-4 h-4" />
-            </Link>
-            <p className="mt-4 text-xs text-muted-foreground">
-              All testimonials are reviewed before they appear on the website.
-            </p>
-          </div>
+              <h2 className="font-display text-4xl md:text-6xl">Words from the community</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {[
+                {
+                  quote:
+                    "She helped me come home to myself — gently, and with the Qur'an as our compass. Hira's coaching provided the exact balance of accountability and empathy I needed.",
+                  name: "A. M.",
+                  role: "Coaching Client",
+                },
+                {
+                  quote:
+                    "The Seerah sessions are profound. Hira has a gift for connecting the life of the Prophet ﷺ to the realities we face today. It changed how I view my own challenges.",
+                  name: "S. K.",
+                  role: "Seerah Student",
+                },
+              ].map((t) => (
+                <div
+                  key={t.name}
+                  className="glass-card rounded-3xl p-8 reveal relative overflow-hidden group"
+                >
+                  <div className="absolute top-6 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Quote className="w-16 h-16 text-gold" />
+                  </div>
+                  <div className="flex gap-1 text-gold mb-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-lg leading-relaxed text-foreground/85 italic mb-6 relative z-10">
+                    "{t.quote}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-emerald-gradient grid place-items-center text-primary-foreground text-sm font-bold">
+                      {t.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium">{t.name}</div>
+                      <div className="text-xs text-muted-foreground">{t.role}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="text-center reveal">
+              <Link
+                to="/submit-testimonial"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:bg-muted hover:border-primary/30 transition-all text-sm font-medium"
+              >
+                Share your experience <ArrowRight className="w-4 h-4" />
+              </Link>
+              <p className="mt-4 text-xs text-muted-foreground">
+                All testimonials are reviewed before they appear on the website.
+              </p>
+            </div>
           </div>
         </div>
       </section>

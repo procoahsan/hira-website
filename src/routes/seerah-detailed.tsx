@@ -7,7 +7,11 @@ export const Route = createFileRoute("/seerah-detailed")({
   head: () => ({
     meta: [
       { title: "Detailed Seerah Course — Hira Saqib" },
-      { name: "description", content: "A comprehensive 2–3 year study of the life of the Prophet ﷺ — integrating Quranic revelation with the Prophetic biography." },
+      {
+        name: "description",
+        content:
+          "A comprehensive 2–3 year study of the life of the Prophet ﷺ — integrating Quranic revelation with the Prophetic biography.",
+      },
     ],
   }),
   component: SeerahDetailed,
@@ -40,13 +44,15 @@ function SeerahDetailed() {
           {/* Main content */}
           <div className="md:col-span-3 space-y-8">
             <div>
-              <h2 className="font-display text-3xl mb-5">What If You Could Know Him — Really Know Him?</h2>
+              <h2 className="font-display text-3xl mb-5">
+                What If You Could Know Him — Really Know Him?
+              </h2>
               <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
                 <p>
                   Not the summarised version. Not the highlights reel. But his full life — the years
                   before revelation, the quiet grief, the fierce hope, the battles and the letters
-                  and the tears — woven together with the very words Allah revealed to accompany
-                  him on the journey.
+                  and the tears — woven together with the very words Allah revealed to accompany him
+                  on the journey.
                 </p>
                 <p className="font-display text-xl text-primary italic">This is that course.</p>
               </div>
@@ -57,15 +63,15 @@ function SeerahDetailed() {
               <div className="space-y-5 text-lg leading-relaxed text-foreground/85">
                 <p>
                   This is a comprehensive, in-depth study of the Seerah of the Prophet Muhammad ﷺ —
-                  not as a series of events, but as a living narrative that shaped a civilisation and
-                  continues to shape our souls.
+                  not as a series of events, but as a living narrative that shaped a civilisation
+                  and continues to shape our souls.
                 </p>
                 <p>
                   What makes this course distinct is its integration of Quranic study alongside the
-                  Seerah. You will not simply learn what happened — you will read the ayaat that were
-                  revealed in response, understand the context in which they descended, and experience
-                  the Quran the way the Companions did: as a real-time, living revelation tied to
-                  real moments in a real life.
+                  Seerah. You will not simply learn what happened — you will read the ayaat that
+                  were revealed in response, understand the context in which they descended, and
+                  experience the Quran the way the Companions did: as a real-time, living revelation
+                  tied to real moments in a real life.
                 </p>
                 <p>
                   We will move carefully, thoughtfully, and deeply — covering the full arc of the
@@ -122,7 +128,9 @@ function SeerahDetailed() {
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                        {label}
+                      </div>
                       <div className="font-display text-lg">{value}</div>
                     </div>
                   </div>
@@ -131,7 +139,8 @@ function SeerahDetailed() {
 
               <div className="mt-8 p-4 rounded-2xl bg-secondary/60 border border-border/60">
                 <p className="text-sm text-muted-foreground italic">
-                  Registrations opening soon for July intake. Fill the form below to join the waitlist.
+                  Registrations opening soon for July intake. Fill the form below to join the
+                  waitlist.
                 </p>
               </div>
 
@@ -152,7 +161,12 @@ function SeerahDetailed() {
                 life of the best of creation ﷺ for long enough to truly be changed by it.
               </p>
               <ul className="mt-4 space-y-2 text-sm opacity-90">
-                {["Quran integrated with Seerah", "Space for questions & reflection", "Free of charge", "For women ready for depth"].map((item) => (
+                {[
+                  "Quran integrated with Seerah",
+                  "Space for questions & reflection",
+                  "Free of charge",
+                  "For women ready for depth",
+                ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <Check className="w-4 h-4 shrink-0 mt-0.5" /> {item}
                   </li>
@@ -166,9 +180,12 @@ function SeerahDetailed() {
       {/* CTA */}
       <section className="py-20 bg-emerald-gradient text-primary-foreground">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-display text-4xl mb-6">If you have been waiting — this is your moment.</h2>
+          <h2 className="font-display text-4xl mb-6">
+            If you have been waiting — this is your moment.
+          </h2>
           <p className="text-lg opacity-90 mb-8">
-            Join the waitlist and be among the first to know when registration opens for the July 2026 intake.
+            Join the waitlist and be among the first to know when registration opens for the July
+            2026 intake.
           </p>
           <a
             href="https://forms.gle/vzmvrXmnLisdeRJc6"

@@ -1,1 +1,178 @@
-import{j as e,L as s}from"./index-CLEWXjBW.js";import{S as o,A as a}from"./SiteLayout-ClMWzJak.js";import{P as t}from"./PageHeader-cvIMhO7K.js";import{w as i}from"./rising-woman-m0wPozUL.js";import{h as n}from"./home-schooling-DIiish7e.js";import{C as l}from"./check-q1THb-vR.js";function u(){return e.jsxs(o,{children:[e.jsx(t,{eyebrow:"Services",title:"Honest support, on the terms that fit your life.",intro:"Coaching and homeschool support — choose the shape, the language, and the season."}),e.jsx("section",{className:"py-12",children:e.jsxs("div",{className:"mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-6",children:[e.jsxs("div",{className:"bg-card border border-border rounded-3xl overflow-hidden flex flex-col group",children:[e.jsx("div",{className:"h-48 overflow-hidden",children:e.jsx("img",{src:i,alt:"One-on-One Coaching",loading:"lazy",className:"w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"})}),e.jsxs("div",{className:"p-6 flex flex-col flex-1",children:[e.jsx("h3",{className:"font-display text-2xl mb-1",children:"One-on-One Coaching"}),e.jsx("div",{className:"text-gold text-sm mb-3",children:"$30 / session"}),e.jsx("p",{className:"text-muted-foreground leading-relaxed mb-4",children:"Private, personalised sessions for whatever is most alive in your life right now — relationships, identity, confidence, direction."}),e.jsx("ul",{className:"space-y-2 text-sm text-foreground/80 mb-5",children:["Single session or package","60 minutes","English or Urdu","Worldwide via video"].map(r=>e.jsxs("li",{className:"flex gap-2",children:[e.jsx("span",{className:"text-gold",children:"✦"})," ",r]},r))}),e.jsxs(s,{to:"/bookings",className:"mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition",children:["Book a session ",e.jsx(a,{className:"w-4 h-4"})]})]})]}),e.jsxs("div",{className:"bg-card border border-border rounded-3xl overflow-hidden flex flex-col group",children:[e.jsx("div",{className:"h-48 overflow-hidden",children:e.jsx("img",{src:n,alt:"Home Learning Plan",loading:"lazy",className:"w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"})}),e.jsxs("div",{className:"p-6 flex flex-col flex-1",children:[e.jsx("h3",{className:"font-display text-2xl mb-1",children:"Home Learning Plan"}),e.jsx("div",{className:"text-gold text-sm mb-3",children:"$197"}),e.jsx("p",{className:"text-muted-foreground leading-relaxed mb-3",children:"A personalised roadmap for your child's learning journey."}),e.jsx("p",{className:"text-foreground/85 leading-relaxed mb-4 text-[15px]",children:"Every child is different in the way they think, the way they learn, and the gifts they carry. Yet most curricula are built for the average child, leaving many mothers frustrated, second-guessing themselves, and wondering why what works for others simply isn't working at home."}),e.jsx("p",{className:"text-foreground/85 leading-relaxed mb-4 text-[15px]",children:"Through a series of guided conversations, I work with you to build a clear, honest picture of your child: their learning style, personality, natural strengths, areas of difficulty, and what genuinely lights them up. Where needed, I may also spend time with your child directly to deepen that understanding."}),e.jsxs("p",{className:"text-foreground/85 leading-relaxed mb-4 text-[15px]",children:["At the end of our work together, you will receive a ",e.jsx("strong",{children:"written Home Learning Plan"})," — a practical, faith-aligned roadmap that tells you exactly how to approach your child's education, what to prioritise, and which direction to move in with confidence."]}),e.jsxs(s,{to:"/bookings",className:"mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition",children:["Get started ",e.jsx(a,{className:"w-4 h-4"})]})]})]})]})}),e.jsx("section",{className:"py-20 bg-secondary/40 border-y border-border/60",children:e.jsxs("div",{className:"mx-auto max-w-4xl px-6",children:[e.jsx("h2",{className:"font-display text-3xl text-center mb-10",children:"The Home Learning Plan is for you if…"}),e.jsx("div",{className:"grid md:grid-cols-2 gap-4",children:["You are homeschooling and feel lost about where to start or where to go next","Your child seems disengaged, resistant, or struggling — and you don't know why","You have tried multiple curricula, and nothing seems to stick","You want an education that honours both your child's fitrah and their individuality"].map(r=>e.jsxs("div",{className:"flex gap-3 bg-card border border-border rounded-2xl p-5",children:[e.jsx(l,{className:"w-5 h-5 text-gold shrink-0 mt-0.5"}),e.jsx("span",{className:"text-foreground/85 leading-relaxed",children:r})]},r))})]})})]})}export{u as component};
+import { j as e, L as s } from "./index-CLEWXjBW.js";
+import { S as o, A as a } from "./SiteLayout-ClMWzJak.js";
+import { P as t } from "./PageHeader-cvIMhO7K.js";
+import { w as i } from "./rising-woman-m0wPozUL.js";
+import { h as n } from "./home-schooling-DIiish7e.js";
+import { C as l } from "./check-q1THb-vR.js";
+function u() {
+  return e.jsxs(o, {
+    children: [
+      e.jsx(t, {
+        eyebrow: "Services",
+        title: "Honest support, on the terms that fit your life.",
+        intro: "Coaching and homeschool support — choose the shape, the language, and the season.",
+      }),
+      e.jsx("section", {
+        className: "py-12",
+        children: e.jsxs("div", {
+          className: "mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-6",
+          children: [
+            e.jsxs("div", {
+              className:
+                "bg-card border border-border rounded-3xl overflow-hidden flex flex-col group",
+              children: [
+                e.jsx("div", {
+                  className: "h-48 overflow-hidden",
+                  children: e.jsx("img", {
+                    src: i,
+                    alt: "One-on-One Coaching",
+                    loading: "lazy",
+                    className:
+                      "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500",
+                  }),
+                }),
+                e.jsxs("div", {
+                  className: "p-6 flex flex-col flex-1",
+                  children: [
+                    e.jsx("h3", {
+                      className: "font-display text-2xl mb-1",
+                      children: "One-on-One Coaching",
+                    }),
+                    e.jsx("div", {
+                      className: "text-gold text-sm mb-3",
+                      children: "$30 / session",
+                    }),
+                    e.jsx("p", {
+                      className: "text-muted-foreground leading-relaxed mb-4",
+                      children:
+                        "Private, personalised sessions for whatever is most alive in your life right now — relationships, identity, confidence, direction.",
+                    }),
+                    e.jsx("ul", {
+                      className: "space-y-2 text-sm text-foreground/80 mb-5",
+                      children: [
+                        "Single session or package",
+                        "60 minutes",
+                        "English or Urdu",
+                        "Worldwide via video",
+                      ].map((r) =>
+                        e.jsxs(
+                          "li",
+                          {
+                            className: "flex gap-2",
+                            children: [
+                              e.jsx("span", { className: "text-gold", children: "✦" }),
+                              " ",
+                              r,
+                            ],
+                          },
+                          r,
+                        ),
+                      ),
+                    }),
+                    e.jsxs(s, {
+                      to: "/bookings",
+                      className:
+                        "mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition",
+                      children: ["Book a session ", e.jsx(a, { className: "w-4 h-4" })],
+                    }),
+                  ],
+                }),
+              ],
+            }),
+            e.jsxs("div", {
+              className:
+                "bg-card border border-border rounded-3xl overflow-hidden flex flex-col group",
+              children: [
+                e.jsx("div", {
+                  className: "h-48 overflow-hidden",
+                  children: e.jsx("img", {
+                    src: n,
+                    alt: "Home Learning Plan",
+                    loading: "lazy",
+                    className:
+                      "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500",
+                  }),
+                }),
+                e.jsxs("div", {
+                  className: "p-6 flex flex-col flex-1",
+                  children: [
+                    e.jsx("h3", {
+                      className: "font-display text-2xl mb-1",
+                      children: "Home Learning Plan",
+                    }),
+                    e.jsx("div", { className: "text-gold text-sm mb-3", children: "$197" }),
+                    e.jsx("p", {
+                      className: "text-muted-foreground leading-relaxed mb-3",
+                      children: "A personalised roadmap for your child's learning journey.",
+                    }),
+                    e.jsx("p", {
+                      className: "text-foreground/85 leading-relaxed mb-4 text-[15px]",
+                      children:
+                        "Every child is different in the way they think, the way they learn, and the gifts they carry. Yet most curricula are built for the average child, leaving many mothers frustrated, second-guessing themselves, and wondering why what works for others simply isn't working at home.",
+                    }),
+                    e.jsx("p", {
+                      className: "text-foreground/85 leading-relaxed mb-4 text-[15px]",
+                      children:
+                        "Through a series of guided conversations, I work with you to build a clear, honest picture of your child: their learning style, personality, natural strengths, areas of difficulty, and what genuinely lights them up. Where needed, I may also spend time with your child directly to deepen that understanding.",
+                    }),
+                    e.jsxs("p", {
+                      className: "text-foreground/85 leading-relaxed mb-4 text-[15px]",
+                      children: [
+                        "At the end of our work together, you will receive a ",
+                        e.jsx("strong", { children: "written Home Learning Plan" }),
+                        " — a practical, faith-aligned roadmap that tells you exactly how to approach your child's education, what to prioritise, and which direction to move in with confidence.",
+                      ],
+                    }),
+                    e.jsxs(s, {
+                      to: "/bookings",
+                      className:
+                        "mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition",
+                      children: ["Get started ", e.jsx(a, { className: "w-4 h-4" })],
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          ],
+        }),
+      }),
+      e.jsx("section", {
+        className: "py-20 bg-secondary/40 border-y border-border/60",
+        children: e.jsxs("div", {
+          className: "mx-auto max-w-4xl px-6",
+          children: [
+            e.jsx("h2", {
+              className: "font-display text-3xl text-center mb-10",
+              children: "The Home Learning Plan is for you if…",
+            }),
+            e.jsx("div", {
+              className: "grid md:grid-cols-2 gap-4",
+              children: [
+                "You are homeschooling and feel lost about where to start or where to go next",
+                "Your child seems disengaged, resistant, or struggling — and you don't know why",
+                "You have tried multiple curricula, and nothing seems to stick",
+                "You want an education that honours both your child's fitrah and their individuality",
+              ].map((r) =>
+                e.jsxs(
+                  "div",
+                  {
+                    className: "flex gap-3 bg-card border border-border rounded-2xl p-5",
+                    children: [
+                      e.jsx(l, { className: "w-5 h-5 text-gold shrink-0 mt-0.5" }),
+                      e.jsx("span", {
+                        className: "text-foreground/85 leading-relaxed",
+                        children: r,
+                      }),
+                    ],
+                  },
+                  r,
+                ),
+              ),
+            }),
+          ],
+        }),
+      }),
+    ],
+  });
+}
+export { u as component };

@@ -9,7 +9,11 @@ export const Route = createFileRoute("/book-clubs")({
   head: () => ({
     meta: [
       { title: "Book Clubs — Hira Saqib" },
-      { name: "description", content: "Girls', Rising Women, and Women's book clubs — guided reading with discussion and community." },
+      {
+        name: "description",
+        content:
+          "Girls', Rising Women, and Women's book clubs — guided reading with discussion and community.",
+      },
     ],
   }),
   component: BookClubs,
@@ -58,7 +62,10 @@ function BookClubs() {
       <section className="py-12">
         <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-8">
           {clubs.map((c) => (
-            <article key={c.name} className="bg-card border border-border rounded-[2rem] overflow-hidden flex flex-col hover:shadow-soft transition group min-h-[620px]">
+            <article
+              key={c.name}
+              className="bg-card border border-border rounded-[2rem] overflow-hidden flex flex-col hover:shadow-soft transition group min-h-[620px]"
+            >
               <div className="h-72 overflow-hidden">
                 <img
                   src={c.image}
@@ -74,7 +81,9 @@ function BookClubs() {
                 {c.extra && (
                   <div className="mt-4 p-4 rounded-2xl bg-secondary/60 border border-border/60">
                     <p className="text-sm font-medium text-foreground/85">{c.extra}</p>
-                    <p className="text-xs text-muted-foreground mt-1 italic">June is a free trial month</p>
+                    <p className="text-xs text-muted-foreground mt-1 italic">
+                      June is a free trial month
+                    </p>
                   </div>
                 )}
                 <a
@@ -95,8 +104,8 @@ function BookClubs() {
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="font-display text-4xl mb-4">What we're reading now</h2>
           <p className="text-muted-foreground">
-            From Seerah classics to contemporary memoir, our shelves are a mix of the timeless and the
-            timely. Join a circle to see the current list.
+            From Seerah classics to contemporary memoir, our shelves are a mix of the timeless and
+            the timely. Join a circle to see the current list.
           </p>
         </div>
       </section>

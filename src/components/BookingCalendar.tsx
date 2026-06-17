@@ -163,7 +163,9 @@ export function BookingCalendar() {
         <div className="animate-slide-up">
           <div className="text-center mb-6">
             <h3 className="font-display text-2xl mb-1">Choose a date</h3>
-            <p className="text-sm text-muted-foreground">Only dates with available slots are shown</p>
+            <p className="text-sm text-muted-foreground">
+              Only dates with available slots are shown
+            </p>
           </div>
 
           <div className="bg-card border border-border rounded-3xl p-6 shadow-soft">
@@ -189,7 +191,10 @@ export function BookingCalendar() {
             {/* Weekday headers */}
             <div className="grid grid-cols-7 gap-1 mb-2">
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-                <div key={d} className="text-center text-xs uppercase tracking-wider text-muted-foreground py-2 font-medium">
+                <div
+                  key={d}
+                  className="text-center text-xs uppercase tracking-wider text-muted-foreground py-2 font-medium"
+                >
                   {d}
                 </div>
               ))}
@@ -213,15 +218,17 @@ export function BookingCalendar() {
                     }}
                     className={`
                       relative aspect-square rounded-xl text-sm font-medium transition-all duration-200
-                      ${available
-                        ? "hover:bg-primary/10 hover:border-primary/30 cursor-pointer hover:scale-105"
-                        : "text-muted-foreground/40 cursor-not-allowed"
+                      ${
+                        available
+                          ? "hover:bg-primary/10 hover:border-primary/30 cursor-pointer hover:scale-105"
+                          : "text-muted-foreground/40 cursor-not-allowed"
                       }
-                      ${isSelected
-                        ? "bg-primary text-primary-foreground shadow-soft scale-105"
-                        : available
-                          ? "border border-transparent"
-                          : ""
+                      ${
+                        isSelected
+                          ? "bg-primary text-primary-foreground shadow-soft scale-105"
+                          : available
+                            ? "border border-transparent"
+                            : ""
                       }
                       ${isToday && !isSelected ? "ring-2 ring-gold/50 ring-offset-1 ring-offset-background" : ""}
                     `}
@@ -254,10 +261,7 @@ export function BookingCalendar() {
             <h3 className="font-display text-2xl mb-1">Pick a time</h3>
             <p className="text-sm text-muted-foreground">
               {format(booking.date, "EEEE, MMMM d, yyyy")}
-              <button
-                onClick={() => setStep("date")}
-                className="ml-2 text-primary hover:underline"
-              >
+              <button onClick={() => setStep("date")} className="ml-2 text-primary hover:underline">
                 Change
               </button>
             </p>
@@ -273,9 +277,10 @@ export function BookingCalendar() {
                 }}
                 className={`
                   group relative py-4 px-4 rounded-2xl border text-sm font-medium transition-all duration-300
-                  ${booking.time === slot
-                    ? "bg-primary text-primary-foreground border-primary shadow-soft"
-                    : "border-border bg-card hover:border-primary/40 hover:bg-primary/5 hover:shadow-soft hover:-translate-y-1"
+                  ${
+                    booking.time === slot
+                      ? "bg-primary text-primary-foreground border-primary shadow-soft"
+                      : "border-border bg-card hover:border-primary/40 hover:bg-primary/5 hover:shadow-soft hover:-translate-y-1"
                   }
                 `}
               >
@@ -289,7 +294,10 @@ export function BookingCalendar() {
             <div className="text-center py-12 text-muted-foreground">
               <Calendar className="w-10 h-10 mx-auto mb-3 opacity-40" />
               <p>No slots available on this date.</p>
-              <button onClick={() => setStep("date")} className="mt-3 text-primary text-sm hover:underline">
+              <button
+                onClick={() => setStep("date")}
+                className="mt-3 text-primary text-sm hover:underline"
+              >
                 Choose another date
               </button>
             </div>
@@ -304,10 +312,7 @@ export function BookingCalendar() {
             <h3 className="font-display text-2xl mb-1">Your details</h3>
             <p className="text-sm text-muted-foreground">
               {booking.date && format(booking.date, "EEEE, MMMM d")} at {booking.time}
-              <button
-                onClick={() => setStep("time")}
-                className="ml-2 text-primary hover:underline"
-              >
+              <button onClick={() => setStep("time")} className="ml-2 text-primary hover:underline">
                 Change
               </button>
             </p>
@@ -405,7 +410,8 @@ export function BookingCalendar() {
           </div>
           <h3 className="font-display text-3xl mb-3">Booking Confirmed!</h3>
           <p className="text-muted-foreground leading-relaxed max-w-md mx-auto mb-2">
-            Jazakum'Allahu khayran, <span className="font-medium text-foreground">{booking.name}</span>.
+            Jazakum'Allahu khayran,{" "}
+            <span className="font-medium text-foreground">{booking.name}</span>.
           </p>
           <div className="inline-flex flex-col items-center gap-1 bg-card border border-border rounded-2xl px-8 py-5 mt-4 shadow-soft">
             <div className="text-sm text-muted-foreground">Your discovery call</div>
@@ -416,12 +422,10 @@ export function BookingCalendar() {
             <div className="text-xs text-muted-foreground mt-1">Language: {booking.language}</div>
           </div>
           <p className="text-sm text-muted-foreground mt-6 max-w-sm mx-auto">
-            A confirmation email with meeting details will be sent to <span className="font-medium">{booking.email}</span>.
+            A confirmation email with meeting details will be sent to{" "}
+            <span className="font-medium">{booking.email}</span>.
           </p>
-          <button
-            onClick={reset}
-            className="mt-8 text-sm text-primary hover:underline"
-          >
+          <button onClick={reset} className="mt-8 text-sm text-primary hover:underline">
             Book another call
           </button>
         </div>

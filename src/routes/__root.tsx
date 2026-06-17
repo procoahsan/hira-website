@@ -74,10 +74,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Hira Saqib — Helping Muslim Women Grow From the Inside Out" },
-      { name: "description", content: "Faith-centred coaching, Seerah education, and homeschooling mentorship for Muslim women. Available in English and Urdu, worldwide." },
+      {
+        name: "description",
+        content:
+          "Faith-centred coaching, Seerah education, and homeschooling mentorship for Muslim women. Available in English and Urdu, worldwide.",
+      },
       { name: "author", content: "Hira Saqib" },
       { property: "og:title", content: "Hira Saqib — Substance for the Soul" },
-      { property: "og:description", content: "Coaching, structured programmes, and book clubs for Muslim women." },
+      {
+        property: "og:description",
+        content: "Coaching, structured programmes, and book clubs for Muslim women.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

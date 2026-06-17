@@ -8,7 +8,11 @@ export const Route = createFileRoute("/newsletter")({
   head: () => ({
     meta: [
       { title: "Newsletter — Hira Saqib" },
-      { name: "description", content: "A monthly letter from Hira Saqib — reflections, Seerah notes, and quiet practice for the soul." },
+      {
+        name: "description",
+        content:
+          "A monthly letter from Hira Saqib — reflections, Seerah notes, and quiet practice for the soul.",
+      },
     ],
   }),
   component: Newsletter,
@@ -45,7 +49,10 @@ function Newsletter() {
                   No noise. No selling. Just a quiet monthly note.
                 </p>
                 <form
-                  onSubmit={(e) => { e.preventDefault(); setSub(true); }}
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setSub(true);
+                  }}
                   className="flex flex-col sm:flex-row gap-3"
                 >
                   <input

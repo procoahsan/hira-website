@@ -13,7 +13,11 @@ export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
       { title: "Courses & Programs — Hira Saqib" },
-      { name: "description", content: "The RISE Program, Seerah courses, and Homeschooling mentorship — structured faith-centred journeys for Muslim women." },
+      {
+        name: "description",
+        content:
+          "The RISE Program, Seerah courses, and Homeschooling mentorship — structured faith-centred journeys for Muslim women.",
+      },
     ],
   }),
   component: Courses,
@@ -24,7 +28,12 @@ const courses = [
     tag: "6-Month Flagship",
     title: "The RISE Program",
     body: "A complete personal development journey covering mindset, relationships, habits, and purpose — built around Islamic values and the texture of real life.",
-    bullets: ["Weekly live coaching", "Workbooks & reflection prompts", "Private WhatsApp circle", "Lifetime alumni access"],
+    bullets: [
+      "Weekly live coaching",
+      "Workbooks & reflection prompts",
+      "Private WhatsApp circle",
+      "Lifetime alumni access",
+    ],
     cta: "Learn more",
     to: "/the-rise-program",
     image: riseImg,
@@ -33,7 +42,12 @@ const courses = [
     tag: "6-Month Introductory",
     title: "Seerah — Introductory Course",
     body: "A structured introduction to the life of the Prophet Muhammad ﷺ. Over six months, covering the full span of his life — from the world into which he was born to the legacy he left behind.",
-    bullets: ["Weekly live sessions via Zoom", "6-month duration", "Open to all levels", "Free of charge"],
+    bullets: [
+      "Weekly live sessions via Zoom",
+      "6-month duration",
+      "Open to all levels",
+      "Free of charge",
+    ],
     cta: "Learn more",
     to: "/seerah-introductory",
     image: seerahImg,
@@ -42,7 +56,12 @@ const courses = [
     tag: "2–3 Year In-Depth",
     title: "Seerah — Detailed Study",
     body: "A comprehensive, in-depth study integrating Quranic revelation alongside the Prophetic biography — not a summary, but a true immersion into his life ﷺ.",
-    bullets: ["Weekly 1.5-hour live sessions", "Quran integrated with Seerah", "2–3 year commitment", "Free of charge"],
+    bullets: [
+      "Weekly 1.5-hour live sessions",
+      "Quran integrated with Seerah",
+      "2–3 year commitment",
+      "Free of charge",
+    ],
     cta: "Learn more",
     to: "/seerah-detailed",
     image: seerahImg,
@@ -51,7 +70,12 @@ const courses = [
     tag: "Coming soon",
     title: "Homeschooling — What, Why & How",
     body: "Practical, faith-aligned mentorship for mothers choosing intentional education at home. From confidence to curriculum to rhythm.",
-    bullets: ["Foundations & philosophy", "Choosing a curriculum", "Routines that actually hold", "Community of homeschool mothers"],
+    bullets: [
+      "Foundations & philosophy",
+      "Choosing a curriculum",
+      "Routines that actually hold",
+      "Community of homeschool mothers",
+    ],
     cta: "Notify me",
     to: "/bookings",
     image: homeSchoolingImg,
@@ -96,7 +120,10 @@ function Courses() {
                       alt={c.title}
                       loading="lazy"
                       className="w-full"
-                      style={{ objectFit: isHovered ? "contain" : "cover", height: isHovered ? "auto" : 230 }}
+                      style={{
+                        objectFit: isHovered ? "contain" : "cover",
+                        height: isHovered ? "auto" : 230,
+                      }}
                     />
                   </motion.div>
                 ) : (
@@ -106,9 +133,13 @@ function Courses() {
                   </div>
                 )}
                 <div className="p-5 flex flex-col flex-1">
-                  <div className="text-[10px] uppercase tracking-widest text-gold mb-1">{c.tag}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-gold mb-1">
+                    {c.tag}
+                  </div>
                   <h3 className="font-display text-xl mb-2">{c.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">{c.body}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
+                    {c.body}
+                  </p>
                   <ul className="mt-3 space-y-1.5">
                     {c.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm text-foreground/85">

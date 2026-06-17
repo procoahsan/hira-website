@@ -7,7 +7,11 @@ export const Route = createFileRoute("/seerah-introductory")({
   head: () => ({
     meta: [
       { title: "6-Month Seerah Course — Hira Saqib" },
-      { name: "description", content: "An introductory 6-month study of the life of the Prophet Muhammad ﷺ — structured, coherent, and accessible to all levels." },
+      {
+        name: "description",
+        content:
+          "An introductory 6-month study of the life of the Prophet Muhammad ﷺ — structured, coherent, and accessible to all levels.",
+      },
     ],
   }),
   component: SeerahIntroductory,
@@ -49,7 +53,8 @@ function SeerahIntroductory() {
                 </p>
                 <p>
                   This course is the natural entry point for those who intend to go on to deeper
-                  study, and a complete and meaningful experience in its own right for those who are not.
+                  study, and a complete and meaningful experience in its own right for those who are
+                  not.
                 </p>
               </div>
             </div>
@@ -80,7 +85,9 @@ function SeerahIntroductory() {
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                        {label}
+                      </div>
                       <div className="font-display text-lg">{value}</div>
                     </div>
                   </div>
@@ -91,7 +98,9 @@ function SeerahIntroductory() {
                 <p className="text-sm text-muted-foreground italic">
                   Registration is currently closed. Join the waitlist to be notified when it opens.
                 </p>
-                <p className="mt-2 text-sm font-medium text-primary">Start date: October 2nd, 2026</p>
+                <p className="mt-2 text-sm font-medium text-primary">
+                  Start date: October 2nd, 2026
+                </p>
               </div>
 
               <a
@@ -107,7 +116,12 @@ function SeerahIntroductory() {
             <div className="bg-card border border-border rounded-3xl p-8">
               <h4 className="font-display text-lg mb-3">Open to all</h4>
               <ul className="space-y-2 text-sm text-foreground/80">
-                {["No prior knowledge required", "Beginners welcome", "Suitable for all ages", "English language"].map((item) => (
+                {[
+                  "No prior knowledge required",
+                  "Beginners welcome",
+                  "Suitable for all ages",
+                  "English language",
+                ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <Check className="w-4 h-4 text-gold shrink-0 mt-0.5" /> {item}
                   </li>

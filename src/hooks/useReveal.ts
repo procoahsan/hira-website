@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
  */
 export function useReveal<T extends HTMLElement = HTMLDivElement>(
   threshold = 0.15,
-  rootMargin = "0px 0px -60px 0px"
+  rootMargin = "0px 0px -60px 0px",
 ) {
   const ref = useRef<T>(null);
 
@@ -21,7 +21,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(
           observer.unobserve(el);
         }
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
 
     observer.observe(el);
@@ -45,7 +45,7 @@ export function useRevealAll(selector = ".reveal") {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
     );
 
     document.querySelectorAll(selector).forEach((el) => observer.observe(el));

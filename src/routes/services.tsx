@@ -10,7 +10,11 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Services — Hira Saqib" },
-      { name: "description", content: "One-on-one coaching and homeschool support for Muslim women worldwide — personalised, faith-centred, practical." },
+      {
+        name: "description",
+        content:
+          "One-on-one coaching and homeschool support for Muslim women worldwide — personalised, faith-centred, practical.",
+      },
     ],
   }),
   component: Services,
@@ -45,11 +49,21 @@ function Services() {
                 relationships, identity, confidence, direction.
               </p>
               <ul className="space-y-2 text-sm text-foreground/80 mb-5">
-                {["Single session or package", "60 minutes", "English or Urdu", "Worldwide via video"].map((i) => (
-                  <li key={i} className="flex gap-2"><span className="text-gold">✦</span> {i}</li>
+                {[
+                  "Single session or package",
+                  "60 minutes",
+                  "English or Urdu",
+                  "Worldwide via video",
+                ].map((i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="text-gold">✦</span> {i}
+                  </li>
                 ))}
               </ul>
-              <Link to="/bookings" className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition">
+              <Link
+                to="/bookings"
+                className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition"
+              >
                 Book a session <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -72,22 +86,27 @@ function Services() {
                 A personalised roadmap for your child's learning journey.
               </p>
               <p className="text-foreground/85 leading-relaxed mb-4 text-[15px]">
-                Every child is different in the way they think, the way they learn, and the gifts they carry.
-                Yet most curricula are built for the average child, leaving many mothers frustrated,
-                second-guessing themselves, and wondering why what works for others simply isn't working at home.
+                Every child is different in the way they think, the way they learn, and the gifts
+                they carry. Yet most curricula are built for the average child, leaving many mothers
+                frustrated, second-guessing themselves, and wondering why what works for others
+                simply isn't working at home.
               </p>
               <p className="text-foreground/85 leading-relaxed mb-4 text-[15px]">
-                Through a series of guided conversations, I work with you to build a clear, honest picture
-                of your child: their learning style, personality, natural strengths, areas of difficulty,
-                and what genuinely lights them up. Where needed, I may also spend time with your child
-                directly to deepen that understanding.
+                Through a series of guided conversations, I work with you to build a clear, honest
+                picture of your child: their learning style, personality, natural strengths, areas
+                of difficulty, and what genuinely lights them up. Where needed, I may also spend
+                time with your child directly to deepen that understanding.
               </p>
               <p className="text-foreground/85 leading-relaxed mb-4 text-[15px]">
-                At the end of our work together, you will receive a <strong>written Home Learning Plan</strong> —
-                a practical, faith-aligned roadmap that tells you exactly how to approach your child's
-                education, what to prioritise, and which direction to move in with confidence.
+                At the end of our work together, you will receive a{" "}
+                <strong>written Home Learning Plan</strong> — a practical, faith-aligned roadmap
+                that tells you exactly how to approach your child's education, what to prioritise,
+                and which direction to move in with confidence.
               </p>
-              <Link to="/bookings" className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition">
+              <Link
+                to="/bookings"
+                className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm hover:-translate-y-0.5 transition"
+              >
                 Get started <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -98,7 +117,9 @@ function Services() {
       {/* This is for you section */}
       <section className="py-20 bg-secondary/40 border-y border-border/60">
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="font-display text-3xl text-center mb-10">The Home Learning Plan is for you if…</h2>
+          <h2 className="font-display text-3xl text-center mb-10">
+            The Home Learning Plan is for you if…
+          </h2>
           <div className="grid md:grid-cols-2 gap-4">
             {[
               "You are homeschooling and feel lost about where to start or where to go next",
