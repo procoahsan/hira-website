@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHeader } from "@/components/PageHeader";
 import { ArrowRight, Check, Users, BookOpen, Calendar, Sparkles } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/the-rise-program")({
   head: () => ({
@@ -68,6 +69,53 @@ const framework = [
     title: "Post-Course Quarterly Support",
     body: "True change takes time. You'll receive quarterly check-in sessions for two full years after the program ends, keeping you accountable and supported as you continue to RISE.",
   },
+];
+
+const faqs = [
+  {
+    question: "What makes RISE different from other programs?",
+    answer: "RISE integrates proven personal development frameworks while keeping Islamic values at the foundation, not as an afterthought. But the most important difference is personalisation. Every participant receives a dedicated 1:1 session with each module, so the work is applied to your life, your circumstances, and your specific challenges."
+  },
+  {
+    question: "Do I need to be at a certain stage in my personal development journey?",
+    answer: "No. RISE is designed for women at any stage of their personal development journey, whether you are just beginning to invest in yourself or have done significant work already. What matters is that you are ready to show up honestly and do the work."
+  },
+  {
+    question: "What is the fee for the program?",
+    answer: "RISE is $74.99 per month for 6 months. This includes all group sessions, your module workbooks, your dedicated 1:1 session per module, and your quarterly post-graduation follow-up sessions. Given the level of personalisation built into the program, this is considerably lower than comparable 1:1 coaching arrangements."
+  },
+  {
+    question: "What if I miss a group session?",
+    answer: "Life happens and we understand that. If you miss a group session, you will not lose your place or your progress. You will get the recording of the session which you can go through at your own convenience."
+  },
+  {
+    question: "What if the live session time doesn't suit me?",
+    answer: "If the time does not suit you, you can still benefit as you get a lifetime access to recordings of the sessions."
+  },
+  {
+    question: "Is there an application process?",
+    answer: "RISE is application-based, not to create barriers, but to ensure every woman who joins is in the right place at the right time and that the cohort is a genuine fit for one another. You can apply via the button on this page."
+  },
+  {
+    question: "Is there any support after the program ends?",
+    answer: "RISE doesn’t end at six months. Every graduate receives quarterly 1:1 follow-up sessions for post-course implementation support. These sessions ensure you continue to build on what you worked through during the program rather than returning to old patterns."
+  },
+  {
+    question: "How big are the groups?",
+    answer: "Cohorts are intentionally small. It is an intimate group where every woman is known, supported, and held accountable. The small size is what makes the depth of the program possible."
+  },
+  {
+    question: "When do the live sessions take place?",
+    answer: "The live group sessions run every Thursday from 9:00–11:00 AM KSA time. In addition to the group session, you will have your monthly 1:1 session with Hira, plus time for reading, reflection, and completing your worksheets. Women who get the most from RISE treat it as a genuine investment of time, not something to fit into the margins."
+  },
+  {
+    question: "Are there any materials provided?",
+    answer: "Every module comes with a participant handouts designed specifically for RISE. They guide you through the frameworks, reflective exercises, and practical tools for each area of life. You keep them after the program ends."
+  },
+  {
+    question: "I have more questions, how can I contact you?",
+    answer: "Simply send a message via the contact page or DM on Instagram. Every message is read personally and we will be happy to help you decide if RISE is right for you."
+  }
 ];
 
 function TheRiseProgram() {
@@ -168,6 +216,31 @@ function TheRiseProgram() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-secondary/20 border-t border-border/60">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="text-center mb-14">
+            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">
+              Questions
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl">Frequently Asked Questions</h2>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-border/60">
+                <AccordionTrigger className="text-left font-display text-lg hover:text-primary transition-colors">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed text-base">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 

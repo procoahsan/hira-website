@@ -94,12 +94,14 @@ function SeerahIntroductory() {
                 <p className="mt-2 text-sm font-medium text-primary">Start date: October 2nd, 2026</p>
               </div>
 
-              <Link
-                to="/bookings"
+              <a
+                href="https://forms.gle/vzmvrXmnLisdeRJc6"
+                target="_blank"
+                rel="noreferrer"
                 className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium shadow-elegant hover:-translate-y-0.5 transition"
               >
                 Join the waitlist <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
 
             <div className="bg-card border border-border rounded-3xl p-8">
@@ -123,12 +125,14 @@ function SeerahIntroductory() {
           <p className="text-lg opacity-90 mb-8">
             Join the waitlist and be among the first to know when registration opens.
           </p>
-          <Link
-            to="/bookings"
+          <a
+            href="https://forms.gle/vzmvrXmnLisdeRJc6"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-background/10 backdrop-blur border border-primary-foreground/20 hover:bg-background/20 transition font-medium"
           >
             Get in touch <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </section>
     </SiteLayout>

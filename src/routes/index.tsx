@@ -5,6 +5,13 @@ import { ArrowRight, Sparkles, BookOpen, Users, Heart, Compass, Star, Quote, Che
 import { motion } from "framer-motion";
 import { useRevealAll } from "@/hooks/useReveal";
 import hero from "@/assets/about.jpeg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -199,86 +206,53 @@ function HeroCourseCarousel() {
 }
 
 function FeedbackCarousel() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % feedbacks.length);
-    }, 4200);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const move = (direction: number) => {
-    setActiveIndex((current) => (current + direction + feedbacks.length) % feedbacks.length);
-  };
-
   return (
-    <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[0.9fr_1.1fr]">
-      <div className="reveal">
+    <div className="mx-auto w-full max-w-6xl px-4 md:px-12">
+      <div className="text-center mb-16 reveal">
         <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4 ornament">Feedback</div>
         <h2 className="font-display text-4xl md:text-5xl text-balance">What students felt shift.</h2>
-        <p className="mt-5 text-muted-foreground leading-relaxed">
+        <p className="mt-5 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
           Seerah participants shared these reflections after studying, discussing, and applying the lessons.
         </p>
-        <div className="mt-8 flex items-center gap-3">
-          <button
-            type="button"
-            aria-label="Previous feedback"
-            onClick={() => move(-1)}
-            className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-primary transition hover:bg-muted"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next feedback"
-            onClick={() => move(1)}
-            className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-primary transition hover:bg-muted"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-          <div className="text-sm text-muted-foreground">
-            {activeIndex + 1} / {feedbacks.length}
-          </div>
-        </div>
       </div>
-      <div className="relative h-[430px] md:h-[480px] reveal">
-        {feedbacks.map((feedback, index) => {
-          const offset = (index - activeIndex + feedbacks.length) % feedbacks.length;
-          const visible = offset < 4;
 
-          return (
-            <motion.article
-              key={`${feedback.name}-${index}`}
-              className="absolute inset-x-0 top-0 mx-auto max-w-xl rounded-[2rem] border border-border bg-card p-7 shadow-elegant"
-              initial={false}
-              animate={{
-                opacity: visible ? 1 : 0,
-                scale: visible ? 1 - offset * 0.06 : 0.8,
-                y: visible ? offset * 34 : 120,
-                rotate: visible ? offset * -3 : -10,
-                zIndex: feedbacks.length - offset,
-              }}
-              transition={{ type: "spring", stiffness: 120, damping: 22 }}
-            >
-              <Quote className="h-9 w-9 text-gold/70" />
-              <p className="mt-5 text-lg leading-relaxed text-foreground/85 line-clamp-7">
-                "{feedback.quote}"
-              </p>
-              <div className="mt-7 flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-full bg-emerald-gradient text-sm font-bold text-primary-foreground">
-                  {feedback.name.charAt(0)}
-                </div>
-                <div>
-                  <div className="text-sm font-medium">{feedback.name}</div>
-                  <div className="text-xs text-muted-foreground">{feedback.location}</div>
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full reveal"
+      >
+        <CarouselContent className="-ml-4 md:-ml-6">
+          {feedbacks.map((feedback, index) => (
+            <CarouselItem key={`${feedback.name}-${index}`} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
+              <div className="h-full rounded-3xl border border-border bg-card p-8 shadow-soft flex flex-col group transition-all hover:-translate-y-2 hover:shadow-elegant">
+                <Quote className="h-10 w-10 text-gold/30 mb-6 group-hover:text-gold/70 transition-colors" />
+                <p className="text-lg leading-relaxed text-foreground/85 flex-grow italic">
+                  "{feedback.quote}"
+                </p>
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-emerald-gradient text-sm font-bold text-primary-foreground shadow-sm">
+                    {feedback.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold">{feedback.name}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">{feedback.location}</div>
+                  </div>
                 </div>
               </div>
-            </motion.article>
-          );
-        })}
-      </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="hidden md:block">
+          <CarouselPrevious className="left-[-3rem]" />
+          <CarouselNext className="right-[-3rem]" />
+        </div>
+        <div className="flex items-center justify-center gap-4 mt-8 md:hidden">
+          <CarouselPrevious className="static translate-y-0 h-10 w-10" />
+          <CarouselNext className="static translate-y-0 h-10 w-10" />
+        </div>
+      </Carousel>
     </div>
   );
 }
